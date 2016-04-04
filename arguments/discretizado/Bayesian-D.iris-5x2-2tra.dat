@@ -1,0 +1,84 @@
+@relation  Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4,5,6,7}
+@attribute sepalWidth {0,1,2,3,4,5,6,7,8,9,10}
+@attribute petalLength {0,1,2,3,4,5}
+@attribute petalWidth {0,1,2,3,4}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+0,4,0,0,Iris-setosa
+0,6,0,0,Iris-setosa
+0,9,0,0,Iris-setosa
+2,10,0,0,Iris-setosa
+0,8,0,0,Iris-setosa
+2,10,0,0,Iris-setosa
+3,10,0,0,Iris-setosa
+3,10,0,0,Iris-setosa
+0,8,0,0,Iris-setosa
+3,10,0,0,Iris-setosa
+0,10,0,0,Iris-setosa
+2,8,0,0,Iris-setosa
+0,10,0,0,Iris-setosa
+0,8,0,0,Iris-setosa
+1,8,0,0,Iris-setosa
+0,6,0,0,Iris-setosa
+3,10,0,0,Iris-setosa
+0,6,0,0,Iris-setosa
+0,8,0,0,Iris-setosa
+0,8,0,0,Iris-setosa
+0,4,0,0,Iris-setosa
+0,10,0,0,Iris-setosa
+0,6,0,0,Iris-setosa
+2,10,0,0,Iris-setosa
+0,7,0,0,Iris-setosa
+6,6,1,1,Iris-versicolor
+7,3,1,1,Iris-versicolor
+3,3,1,1,Iris-versicolor
+1,2,1,1,Iris-versicolor
+0,0,1,1,Iris-versicolor
+3,0,1,1,Iris-versicolor
+4,4,1,1,Iris-versicolor
+3,4,1,1,Iris-versicolor
+3,2,1,1,Iris-versicolor
+3,6,2,4,Iris-versicolor
+4,3,1,1,Iris-versicolor
+6,4,1,1,Iris-versicolor
+7,4,4,3,Iris-versicolor
+3,1,1,1,Iris-versicolor
+3,0,1,1,Iris-versicolor
+3,0,1,1,Iris-versicolor
+3,2,1,1,Iris-versicolor
+3,2,5,2,Iris-versicolor
+7,5,1,1,Iris-versicolor
+3,4,1,1,Iris-versicolor
+3,1,1,1,Iris-versicolor
+3,1,1,1,Iris-versicolor
+3,2,1,1,Iris-versicolor
+3,4,1,1,Iris-versicolor
+4,4,1,1,Iris-versicolor
+5,7,5,4,Iris-virginica
+5,4,5,4,Iris-virginica
+7,4,5,4,Iris-virginica
+7,4,5,4,Iris-virginica
+7,1,5,4,Iris-virginica
+7,9,5,4,Iris-virginica
+7,6,5,4,Iris-virginica
+3,3,5,4,Iris-virginica
+6,6,5,4,Iris-virginica
+7,10,5,4,Iris-virginica
+7,1,5,4,Iris-virginica
+7,6,5,4,Iris-virginica
+3,3,3,4,Iris-virginica
+7,6,5,4,Iris-virginica
+4,3,2,4,Iris-virginica
+4,4,3,4,Iris-virginica
+6,3,5,4,Iris-virginica
+7,4,5,2,Iris-virginica
+7,10,5,4,Iris-virginica
+5,3,5,1,Iris-virginica
+4,1,5,1,Iris-virginica
+5,8,5,4,Iris-virginica
+7,5,5,4,Iris-virginica
+7,5,5,4,Iris-virginica
+7,7,5,4,Iris-virginica

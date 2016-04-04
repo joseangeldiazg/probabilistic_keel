@@ -1,0 +1,6 @@
+algorithm = K Nearest Neighbors Classifier
+inputData = "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/iris/iris-10-1tra.dat" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/iris/iris-10-10tra.dat" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/iris/iris-10-1tst.dat" 
+outputData = "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/resultadoKNN.tra" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/resultadoKNN.tst" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/resultadoKNN.txt"  
+
+K Value = 5
+Distance Function = Euclidean

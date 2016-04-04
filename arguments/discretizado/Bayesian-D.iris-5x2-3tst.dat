@@ -1,0 +1,84 @@
+@relation  Iris_Plants_Database
+@attribute sepalLength {0,1,2,3,4,5,6,7,8,9,10,11}
+@attribute sepalWidth {0,1,2,3,4,5,6,7,8,9}
+@attribute petalLength {0,1,2}
+@attribute petalWidth {0,1,2}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+0,4,0,0,Iris-setosa
+2,8,0,0,Iris-setosa
+0,7,0,0,Iris-setosa
+2,7,0,0,Iris-setosa
+0,2,0,0,Iris-setosa
+1,4,0,0,Iris-setosa
+0,3,0,0,Iris-setosa
+0,3,0,0,Iris-setosa
+5,9,0,0,Iris-setosa
+3,9,0,0,Iris-setosa
+3,7,0,0,Iris-setosa
+3,9,0,0,Iris-setosa
+0,8,0,0,Iris-setosa
+0,7,0,0,Iris-setosa
+2,7,0,0,Iris-setosa
+3,7,0,0,Iris-setosa
+1,4,0,0,Iris-setosa
+2,5,0,0,Iris-setosa
+4,7,0,0,Iris-setosa
+1,4,0,0,Iris-setosa
+2,7,0,0,Iris-setosa
+0,0,0,0,Iris-setosa
+0,5,0,0,Iris-setosa
+3,9,0,0,Iris-setosa
+2,6,0,0,Iris-setosa
+10,5,1,1,Iris-versicolor
+9,5,1,1,Iris-versicolor
+4,1,1,1,Iris-versicolor
+1,0,1,1,Iris-versicolor
+9,2,1,1,Iris-versicolor
+6,0,1,1,Iris-versicolor
+7,2,1,1,Iris-versicolor
+9,4,1,1,Iris-versicolor
+4,0,1,1,Iris-versicolor
+5,5,1,2,Iris-versicolor
+7,1,1,1,Iris-versicolor
+7,1,1,1,Iris-versicolor
+9,2,1,1,Iris-versicolor
+9,3,1,1,Iris-versicolor
+9,3,2,2,Iris-versicolor
+4,0,1,1,Iris-versicolor
+4,0,1,1,Iris-versicolor
+5,0,1,1,Iris-versicolor
+6,7,1,1,Iris-versicolor
+9,4,1,1,Iris-versicolor
+9,0,1,1,Iris-versicolor
+4,3,1,1,Iris-versicolor
+4,0,1,1,Iris-versicolor
+7,3,1,1,Iris-versicolor
+5,0,1,1,Iris-versicolor
+11,3,2,2,Iris-virginica
+11,2,2,2,Iris-virginica
+9,0,2,2,Iris-virginica
+9,5,2,2,Iris-virginica
+9,0,2,2,Iris-virginica
+4,0,2,2,Iris-virginica
+5,1,2,2,Iris-virginica
+9,5,2,2,Iris-virginica
+9,3,2,2,Iris-virginica
+11,9,2,2,Iris-virginica
+11,0,2,2,Iris-virginica
+6,0,2,1,Iris-virginica
+4,1,1,2,Iris-virginica
+9,0,1,2,Iris-virginica
+9,6,2,2,Iris-virginica
+8,1,1,2,Iris-virginica
+11,1,2,2,Iris-virginica
+11,9,2,2,Iris-virginica
+7,0,2,1,Iris-virginica
+11,3,2,2,Iris-virginica
+6,3,1,2,Iris-virginica
+10,4,2,2,Iris-virginica
+9,4,2,2,Iris-virginica
+10,4,2,2,Iris-virginica
+5,0,2,2,Iris-virginica

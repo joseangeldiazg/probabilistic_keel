@@ -1,0 +1,309 @@
+@relation   Iris_Plants_Database
+@attribute sepalLength{0,1,2,3,4,5,6,7,8,9,10,11,12,13}
+@attribute sepalWidth{0,1,2,3,4,5,6,7,8}
+@attribute petalLength{0,1,2,3,4}
+@attribute petalWidth{0,1,2}
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+PClase: Iris-setosa Probabilidad: 0.9890270665691295
+Clase: Iris-versicolor Probabilidad: 0.0043891733723482075
+Clase: Iris-virginica Probabilidad: 0.006583760058522311
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.997234003319196
+Clase: Iris-versicolor Probabilidad: 0.0016595980084823897
+Clase: Iris-virginica Probabilidad: 0.0011063986723215931
+
+PClase: Iris-setosa Probabilidad: 0.9926578560939796
+Clase: Iris-versicolor Probabilidad: 0.005873715124816445
+Clase: Iris-virginica Probabilidad: 0.0014684287812041113
+
+PClase: Iris-setosa Probabilidad: 0.9988917620982638
+Clase: Iris-versicolor Probabilidad: 2.770594754340598E-4
+Clase: Iris-virginica Probabilidad: 8.311784263021794E-4
+
+PClase: Iris-setosa Probabilidad: 0.9991554054054054
+Clase: Iris-versicolor Probabilidad: 2.815315315315315E-4
+Clase: Iris-virginica Probabilidad: 5.63063063063063E-4
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.9988917620982638
+Clase: Iris-versicolor Probabilidad: 7.388252678241594E-4
+Clase: Iris-virginica Probabilidad: 3.694126339120797E-4
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 8.805064673200022E-6
+Clase: Iris-virginica Probabilidad: 1.7610129346400045E-5
+
+PClase: Iris-setosa Probabilidad: 0.9990301574839514
+Clase: Iris-versicolor Probabilidad: 5.54195723456334E-4
+Clase: Iris-virginica Probabilidad: 4.1564679259225044E-4
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.9996765100050834
+Clase: Iris-versicolor Probabilidad: 1.3863856924996532E-4
+Clase: Iris-virginica Probabilidad: 1.848514256666204E-4
+
+PClase: Iris-setosa Probabilidad: 0.9994455738310848
+Clase: Iris-versicolor Probabilidad: 3.696174459434484E-4
+Clase: Iris-virginica Probabilidad: 1.848087229717242E-4
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.9926578560939796
+Clase: Iris-versicolor Probabilidad: 0.005873715124816445
+Clase: Iris-virginica Probabilidad: 0.0014684287812041113
+
+PClase: Iris-setosa Probabilidad: 0.9998591350894492
+Clase: Iris-versicolor Probabilidad: 1.0564868291308637E-4
+Clase: Iris-virginica Probabilidad: 3.5216227637695446E-5
+
+PClase: Iris-setosa Probabilidad: 0.9926578560939796
+Clase: Iris-versicolor Probabilidad: 0.005873715124816445
+Clase: Iris-virginica Probabilidad: 0.0014684287812041113
+
+PClase: Iris-setosa Probabilidad: 0.9988917620982638
+Clase: Iris-versicolor Probabilidad: 2.770594754340598E-4
+Clase: Iris-virginica Probabilidad: 8.311784263021794E-4
+
+PClase: Iris-setosa Probabilidad: 0.9983385637806904
+Clase: Iris-versicolor Probabilidad: 0.0012922281705741183
+Clase: Iris-virginica Probabilidad: 3.6920804873546233E-4
+
+PClase: Iris-setosa Probabilidad: 0.9988917620982638
+Clase: Iris-versicolor Probabilidad: 2.770594754340598E-4
+Clase: Iris-virginica Probabilidad: 8.311784263021794E-4
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.9996765100050834
+Clase: Iris-versicolor Probabilidad: 1.3863856924996532E-4
+Clase: Iris-virginica Probabilidad: 1.848514256666204E-4
+
+PClase: Iris-setosa Probabilidad: 0.9999735848059804
+Clase: Iris-versicolor Probabilidad: 1.7610129346400045E-5
+Clase: Iris-virginica Probabilidad: 8.805064673200022E-6
+
+PClase: Iris-setosa Probabilidad: 0.9988917620982638
+Clase: Iris-versicolor Probabilidad: 7.388252678241594E-4
+Clase: Iris-virginica Probabilidad: 3.694126339120797E-4
+
+PClase: Iris-setosa Probabilidad: 0.002235885969815538
+Clase: Iris-versicolor Probabilidad: 0.9642258244829514
+Clase: Iris-virginica Probabilidad: 0.03353828954723308
+
+PClase: Iris-setosa Probabilidad: 1.8989745537409793E-4
+Clase: Iris-versicolor Probabilidad: 0.9827193315609571
+Clase: Iris-virginica Probabilidad: 0.01709077098366881
+
+PClase: Iris-setosa Probabilidad: 9.644131545954284E-5
+Clase: Iris-versicolor Probabilidad: 0.9981676150062687
+Clase: Iris-virginica Probabilidad: 0.0017359436782717714
+
+PClase: Iris-setosa Probabilidad: 0.002310469314079421
+Clase: Iris-versicolor Probabilidad: 0.996389891696751
+Clase: Iris-virginica Probabilidad: 0.0012996389891696749
+
+PClase: Iris-setosa Probabilidad: 0.0034617048896581556
+Clase: Iris-versicolor Probabilidad: 0.99524015577672
+Clase: Iris-virginica Probabilidad: 0.0012981393336218084
+
+PClase: Iris-setosa Probabilidad: 2.8530670470756046E-4
+Clase: Iris-versicolor Probabilidad: 0.9843081312410842
+Clase: Iris-virginica Probabilidad: 0.015406562054208267
+
+PClase: Iris-setosa Probabilidad: 8.554319931565438E-4
+Clase: Iris-versicolor Probabilidad: 0.9837467921300257
+Clase: Iris-virginica Probabilidad: 0.015397775876817793
+
+PClase: Iris-setosa Probabilidad: 1.2873326467559211E-4
+Clase: Iris-versicolor Probabilidad: 0.9992919670442844
+Clase: Iris-virginica Probabilidad: 5.792996910401647E-4
+
+PClase: Iris-setosa Probabilidad: 7.703418391911405E-4
+Clase: Iris-versicolor Probabilidad: 0.9966297544535387
+Clase: Iris-virginica Probabilidad: 0.0025999037072700995
+
+PClase: Iris-setosa Probabilidad: 1.6556291390728471E-4
+Clase: Iris-versicolor Probabilidad: 0.9995860927152318
+Clase: Iris-virginica Probabilidad: 2.4834437086092704E-4
+
+PClase: Iris-setosa Probabilidad: 5.614823133071308E-4
+Clase: Iris-versicolor Probabilidad: 0.9825940482874791
+Clase: Iris-virginica Probabilidad: 0.016844469399213927
+
+PClase: Iris-setosa Probabilidad: 1.8989745537409793E-4
+Clase: Iris-versicolor Probabilidad: 0.9827193315609571
+Clase: Iris-virginica Probabilidad: 0.01709077098366881
+
+PClase: Iris-setosa Probabilidad: 7.094714437743879E-4
+Clase: Iris-versicolor Probabilidad: 0.07981553742461867
+Clase: Iris-virginica Probabilidad: 0.9194749911316069
+
+PClase: Iris-setosa Probabilidad: 1.9120458891013376E-4
+Clase: Iris-versicolor Probabilidad: 0.9894837476099426
+Clase: Iris-virginica Probabilidad: 0.010325047801147227
+
+PClase: Iris-setosa Probabilidad: 3.8598861333590635E-4
+Clase: Iris-versicolor Probabilidad: 0.9987455370066584
+Clase: Iris-virginica Probabilidad: 8.684743800057895E-4
+
+PClase: Iris-setosa Probabilidad: 1.6556291390728471E-4
+Clase: Iris-versicolor Probabilidad: 0.9995860927152318
+Clase: Iris-virginica Probabilidad: 2.4834437086092704E-4
+
+PClase: Iris-setosa Probabilidad: 1.6556291390728471E-4
+Clase: Iris-versicolor Probabilidad: 0.9995860927152318
+Clase: Iris-virginica Probabilidad: 2.4834437086092704E-4
+
+PClase: Iris-setosa Probabilidad: 1.4415453366008353E-4
+Clase: Iris-versicolor Probabilidad: 0.994666282254577
+Clase: Iris-virginica Probabilidad: 0.0051895632117630085
+
+PClase: Iris-setosa Probabilidad: 0.0013812154696132592
+Clase: Iris-versicolor Probabilidad: 0.10359116022099447
+Clase: Iris-virginica Probabilidad: 0.8950276243093923
+
+PClase: Iris-setosa Probabilidad: 0.03420195439739413
+Clase: Iris-versicolor Probabilidad: 0.9364820846905537
+Clase: Iris-virginica Probabilidad: 0.029315960912052113
+
+PClase: Iris-setosa Probabilidad: 7.703418391911405E-4
+Clase: Iris-versicolor Probabilidad: 0.9966297544535387
+Clase: Iris-virginica Probabilidad: 0.0025999037072700995
+
+PClase: Iris-setosa Probabilidad: 3.8598861333590635E-4
+Clase: Iris-versicolor Probabilidad: 0.9987455370066584
+Clase: Iris-virginica Probabilidad: 8.684743800057895E-4
+
+PClase: Iris-setosa Probabilidad: 2.8752156411730864E-4
+Clase: Iris-versicolor Probabilidad: 0.9919493962047153
+Clase: Iris-virginica Probabilidad: 0.007763082231167334
+
+PClase: Iris-setosa Probabilidad: 3.8598861333590635E-4
+Clase: Iris-versicolor Probabilidad: 0.9987455370066584
+Clase: Iris-virginica Probabilidad: 8.684743800057895E-4
+
+PClase: Iris-setosa Probabilidad: 7.703418391911405E-4
+Clase: Iris-versicolor Probabilidad: 0.9966297544535387
+Clase: Iris-virginica Probabilidad: 0.0025999037072700995
+
+PClase: Iris-setosa Probabilidad: 5.7567209717344984E-5
+Clase: Iris-versicolor Probabilidad: 0.005181048874561048
+Clase: Iris-virginica Probabilidad: 0.9947613839157216
+
+PClase: Iris-setosa Probabilidad: 1.2411567580985477E-4
+Clase: Iris-versicolor Probabilidad: 0.9991311902693311
+Clase: Iris-virginica Probabilidad: 7.446940548591287E-4
+
+PClase: Iris-setosa Probabilidad: 2.1500752526338416E-4
+Clase: Iris-versicolor Probabilidad: 0.009030316061062136
+Clase: Iris-virginica Probabilidad: 0.9907546764136744
+
+PClase: Iris-setosa Probabilidad: 0.0025967602324718678
+Clase: Iris-versicolor Probabilidad: 2.47310498330654E-4
+Clase: Iris-virginica Probabilidad: 0.9971559292691974
+
+PClase: Iris-setosa Probabilidad: 1.1564704521799466E-4
+Clase: Iris-versicolor Probabilidad: 6.938822713079681E-4
+Clase: Iris-virginica Probabilidad: 0.9991904706834741
+
+PClase: Iris-setosa Probabilidad: 1.284356537374775E-4
+Clase: Iris-versicolor Probabilidad: 0.0011559208836372976
+Clase: Iris-virginica Probabilidad: 0.9987156434626253
+
+PClase: Iris-setosa Probabilidad: 0.003225806451612903
+Clase: Iris-versicolor Probabilidad: 0.06774193548387096
+Clase: Iris-virginica Probabilidad: 0.9290322580645162
+
+PClase: Iris-setosa Probabilidad: 3.469210754553339E-4
+Clase: Iris-versicolor Probabilidad: 5.20381613183001E-4
+Clase: Iris-virginica Probabilidad: 0.9991326973113617
+
+PClase: Iris-setosa Probabilidad: 7.713668620796048E-5
+Clase: Iris-versicolor Probabilidad: 2.3141005862388153E-4
+Clase: Iris-virginica Probabilidad: 0.9996914532551682
+
+PClase: Iris-setosa Probabilidad: 0.0025967602324718678
+Clase: Iris-versicolor Probabilidad: 2.47310498330654E-4
+Clase: Iris-virginica Probabilidad: 0.9971559292691974
+
+PClase: Iris-setosa Probabilidad: 8.262414277451868E-5
+Clase: Iris-versicolor Probabilidad: 4.957448566471122E-4
+Clase: Iris-virginica Probabilidad: 0.9994216310005785
+
+PClase: Iris-setosa Probabilidad: 5.76867608883761E-4
+Clase: Iris-versicolor Probabilidad: 0.002595904239976925
+Clase: Iris-virginica Probabilidad: 0.9968272281511394
+
+PClase: Iris-setosa Probabilidad: 0.010989010989010988
+Clase: Iris-versicolor Probabilidad: 0.5934065934065934
+Clase: Iris-virginica Probabilidad: 0.39560439560439564
+
+PClase: Iris-setosa Probabilidad: 0.002375296912114014
+Clase: Iris-versicolor Probabilidad: 0.14251781472684086
+Clase: Iris-virginica Probabilidad: 0.8551068883610451
+
+PClase: Iris-setosa Probabilidad: 0.004149377593360995
+Clase: Iris-versicolor Probabilidad: 0.09958506224066391
+Clase: Iris-virginica Probabilidad: 0.896265560165975
+
+PClase: Iris-setosa Probabilidad: 4.335573379579448E-4
+Clase: Iris-versicolor Probabilidad: 0.016258400173422935
+Clase: Iris-virginica Probabilidad: 0.983308042488619
+
+PClase: Iris-setosa Probabilidad: 4.130353971335341E-5
+Clase: Iris-versicolor Probabilidad: 7.434637148403615E-4
+Clase: Iris-virginica Probabilidad: 0.9992152327454462
+
+PClase: Iris-setosa Probabilidad: 0.0025967602324718678
+Clase: Iris-versicolor Probabilidad: 2.47310498330654E-4
+Clase: Iris-virginica Probabilidad: 0.9971559292691974
+
+PClase: Iris-setosa Probabilidad: 5.780680964217583E-5
+Clase: Iris-versicolor Probabilidad: 0.0010405225735591651
+Clase: Iris-virginica Probabilidad: 0.9989016706167986
+
+PClase: Iris-setosa Probabilidad: 3.043213633597078E-4
+Clase: Iris-versicolor Probabilidad: 0.3423615337796713
+Clase: Iris-virginica Probabilidad: 0.6573341448569691
+
+PClase: Iris-setosa Probabilidad: 0.0036263166983249873
+Clase: Iris-versicolor Probabilidad: 0.001726817475392851
+Clase: Iris-virginica Probabilidad: 0.9946468658262821
+
+PClase: Iris-setosa Probabilidad: 3.4662045060658575E-4
+Clase: Iris-versicolor Probabilidad: 0.001386481802426343
+Clase: Iris-virginica Probabilidad: 0.9982668977469671
+
+PClase: Iris-setosa Probabilidad: 4.315925766076823E-4
+Clase: Iris-versicolor Probabilidad: 0.005179110919292189
+Clase: Iris-virginica Probabilidad: 0.9943892965041002
+
+PClase: Iris-setosa Probabilidad: 5.743825387708213E-4
+Clase: Iris-versicolor Probabilidad: 0.0068925904652498565
+Clase: Iris-virginica Probabilidad: 0.9925330269959795
+
+PClase: Iris-setosa Probabilidad: 1.441545336600836E-4
+Clase: Iris-versicolor Probabilidad: 0.003459708807842007
+Clase: Iris-virginica Probabilidad: 0.996396136658498
+
