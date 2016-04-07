@@ -1,3 +1,3 @@
 algorithm = Naive Bayes Classifier
-inputData = "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/discretizado/Bayesian-D.iris-5x2-1tra.dat" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/discretizado/Bayesian-D.iris-5x2-1tra.dat" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/discretizado/Bayesian-D.iris-5x2-1tst.dat" 
-outputData = "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/result0.tra" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/result0.tst" "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/arguments/result0e0.txt"  
+inputData = "./datasets/discretizado/Bayesian-D.iris-5x2-1tra.dat" "./datasets/discretizado/Bayesian-D.iris-5x2-1tra.dat" "./datasets/discretizado/Bayesian-D.iris-5x2-1tst.dat" 
+outputData = "./output/NB/salidaNB.tra" "./output/NB/salidaNB.tst" "./output/NB/resultadoNB.txt”  

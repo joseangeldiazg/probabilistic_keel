@@ -1,0 +1,1 @@
+Linear Kernel selected. No support vector extracted.

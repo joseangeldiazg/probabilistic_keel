@@ -82,6 +82,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -1480,7 +1481,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	 * Estimates class probabilities for given instance.
 	 * 
 	 * @param inst the instance to compute the probabilities for
-     * @return  class probabilities for given instance.
+         * @return  class probabilities for given instance.
 	 * @throws Exception in case of an error
 	 */
 	public double[] distributionForInstance(Instance inst) throws Exception {
@@ -1512,6 +1513,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 					if ((m_classifiers[i][j].m_alpha != null) || 
 							(m_classifiers[i][j].m_sparseWeights != null)) {
 						double output = m_classifiers[i][j].SVMOutput(-1, inst);
+                                               // System.out.println(m_classifiers[i][j]);
+                                                //System.out.println(output);
 						if (output > 0) {
 							result[j] += 1;
 						} else {
@@ -1521,6 +1524,15 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				} 
 			}
 			Utils.normalize(result);
+                        
+//                        Llegados a este punto es necesario obtener las probabilidades. 
+//                        Normalizamos y obtenemos en un bucle que itera segun el numero
+//                        de clases a considerar. 
+                        
+                        for(int i=0; i<inst.numClasses();i++)
+                        {
+                            System.out.println(result[i]);
+                        }           
 			return result;
 		} else {
 
@@ -1548,7 +1560,9 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 					}
 				}
 			}
+                        
 			return pairwiseCoupling(n, r);
+                        
 		}
 	}
 
@@ -2518,7 +2532,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
 				probabilities[i] = dist;
-				
+              
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])

@@ -33,6 +33,7 @@ package keel.Algorithms.Statistical_Classifiers.Naive_Bayes;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util;
 import java.io.IOException;
+import java.util.Arrays;
 import org.core.*;
 
 /**
@@ -48,8 +49,6 @@ import org.core.*;
  */
 public class Algorithm {
 
-    String probOutTr, probOutTst;
-    
     
     myDataset train, val, test;
     String outputTr, outputTst, output;
@@ -57,6 +56,10 @@ public class Algorithm {
     double attrProb[][][]; //atribute value, atribute position, class
     int counts[][][]; //atribute value, atribute position, class
     int nClasses;
+    
+    //This matrix is used to store de probabilities
+    
+    double probabilities[][] = null;
 
     //We may declare here the algorithm's parameters
 
@@ -102,10 +105,6 @@ public class Algorithm {
         outputTr = parameters.getTrainingOutputFile();
         outputTst = parameters.getTestOutputFile();
         output = parameters.getOutputFile(0);
-        
-        probOutTr = "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/salidaTr.txt";
-        probOutTst = "/Users/joseadiazg/Desktop/TFG/probabilistic_keel/salidaTst.txt";
-
         //Now we parse the parameters, for example:
         /*
          seed = Long.parseLong(parameters.getParameter(0));
@@ -128,6 +127,12 @@ public class Algorithm {
             //We do here the algorithm's operations
          
             nClasses = train.getnOutputs();
+            
+            //Initialize de matrix of probabilities 
+            
+            this.probabilities = new double [train.getnData()][this.nClasses];
+            
+            
             computeProbabilites();
 
             //Finally we should fill the training and test output files
@@ -138,12 +143,11 @@ public class Algorithm {
             doOutput(this.val, this.outputTr);
             doOutput(this.test, this.outputTst);
            
+            doOutputProb(this.val);
             
-            doOutputProb(this.val, this.probOutTr);
-            doOutputProb(this.test, this.probOutTst);
+            generateProbabilisticOutput(probabilities,nClasses,train.getnData(),"./output/NB/probabilisticNB.txt");
             
             generateOutputInfo();
-
             System.out.println("Algorithm Finished");
         }
     }
@@ -163,20 +167,16 @@ public class Algorithm {
                     this.classificationOutput(dataset.getExample(i),dataset.getMissing(i)) + "\n";
         }
         Fichero.escribeFichero(filename, output);
-    }
+    }    
     
-    private void doOutputProb(myDataset dataset, String filename) {
-        String output = new String("");
-        output = dataset.copyHeader(); //we insert the header in the output file
-        //We write the output for each example
-        for (int i = 0; i < dataset.getnData(); i++) {
-            //for classification:
-             output += 
-                    this.classificationOutputProb(dataset.getExample(i),dataset.getMissing(i)) + "\n";
+    
+    private void doOutputProb(myDataset dataset) 
+    {
+        for (int i = 0; i < dataset.getnData(); i++) 
+        {   
+                probabilities[i]=this.classificationOutputProb(dataset.getExample(i),dataset.getMissing(i));
         }
-        Fichero.escribeFichero(filename, output);
     }
-    
 
     /**
      * It returns the algorithm classification output given an input example
@@ -221,9 +221,16 @@ public class Algorithm {
         return output;
     }
     
+    /**
+     * It returns the probability of each class for a given instance 
+     * @param example double[] The input example
+     * @param missing boolean [] A vector that stores the possible missing attributes of the examples
+     * @return array with the probabilites for each class 
+     */
     
-    private String classificationOutputProb(double[] example, boolean [] missing) {
-        String output = new String("P");
+    
+    private double [] classificationOutputProb(double[] example, boolean [] missing) {
+        
         /**
           Here we should include the algorithm directives to generate the
           classification output from the input example
@@ -232,6 +239,7 @@ public class Algorithm {
         //We compute P(C_i | X_j)
         double probClasses[] = new double[nClasses];
         double probExampleClass[] = new double[nClasses];
+        double output [] = new double[nClasses];
         double probExample = 0.0;
 
         for (int i = 0; i < nClasses; i++) {
@@ -243,12 +251,12 @@ public class Algorithm {
             probClasses[i] = (probExampleClass[i] * this.classProb[i]) /
                              probExample;
         }
-
         for (int i = 0; i < nClasses; i++) 
-        {    
-            output+= "Clase: "+train.getOutputValue(i)+" Probabilidad: "+probClasses[i]+"\n";            
+        {             
+           output[i]=probClasses[i];
+           
         }       
-        return output;
+       return output;
     }
         
     
@@ -330,6 +338,7 @@ public class Algorithm {
             }
         }
         return prob;
+        
     }
 
     /**
@@ -352,6 +361,25 @@ public class Algorithm {
             string += "\n\n";
         }
         Fichero.escribeFichero(output,string);
+    }
+    
+    
+    private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+    {
+        String output = new String("Probabilistic Output.\n");
+     
+        //We write the output for each example
+        for(int i=0; i<numClasses; i++)
+        {
+               output+=train.getOutputValue(i)+' ';
+        }
+        output+='\n';
+        for(int i=0; i<instances; i++)
+        {
+               output+=(Arrays.toString(probabilities[i])+'\n');
+        }
+        output+='\n';
+        Fichero.escribeFichero(filename, output);    
     }
 }
 

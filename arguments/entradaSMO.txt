@@ -1,0 +1,22 @@
+algorithm = SMO
+inputData = "./datasets/iris/iris-5x2-1tra.dat" "./datasets/iris/iris-5x2-1tra.dat" "./datasets/iris/iris-5x2-1tst.dat" 
+outputData = "./output/SMO/salidaSMO.tra" "./output/SMO/salidaSMO.tst" "./output/SMO/resultSMO.txt"  
+
+seed = 1286082570
+C = 1.0
+toleranceParameter = 0.001
+epsilon = 1.0E-12
+RBFKernel_gamma = 0.01
+-Normalized-PolyKernel_exponent = 1
+-Normalized-PolyKernel_useLowerOrder = False
+PukKernel_omega = 1.0
+PukKernel_sigma = 1.0
+StringKernel_lambda = 0.5
+StringKernel_subsequenceLength = 3
+StringKernel_maxSubsequenceLength = 9
+StringKernel_normalize = False
+StringKernel_pruning = None
+KERNELtype = PolyKernel
+FitLogisticModels = False
+ConvertNominalAttributesToBinary = True
+PreprocessType = Normalize
