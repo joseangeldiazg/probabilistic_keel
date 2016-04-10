@@ -2347,6 +2347,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		double []dist;
 		String instanciasIN[];
 		String instanciasOUT[];
+               
 
 		try{
 			//*********build de SMO classifier********
@@ -2371,12 +2372,14 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			int tipo = a.getType();
 			instanciasIN = new String[ISval.getNumInstances()];
 			instanciasOUT = new String[ISval.getNumInstances()];
-
+                        this.probabilities = new double[isWeka.numInstances()][this.m_NumClasses];
 			for (int i = 0; i < isWeka.numInstances();i++) {
 				keel.Dataset.Instance inst = ISval.getInstance(i);
 				instWeka = isWeka.instance(i);
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
+                                probabilities[i]=dist;
+                                
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])
@@ -2455,13 +2458,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		String instanciasIN[];
 		String instanciasOUT[];
 
-       // System.out.println("******TRAIN*******");
-       
- 
-
-		
-
-		
+                 // System.out.println("******TRAIN*******");
+	
 		try{
 			//*********build de SMO classifier********
 			//IS.readSet(input_train_name, true);
@@ -2476,7 +2474,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			
 	
 			buildClassifier(isWeka);
-
+                   
 					//********validate the obtained SMO*******
 			ISval = new InstanceSet(train); // .readSet(input_validation_name, false);
 			isWeka = InstancesKEEL2Weka(ISval,m_filterType,m_nominalToBinary);
@@ -2490,6 +2488,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				keel.Dataset.Instance inst = ISval.getInstance(i);
 				instWeka = isWeka.instance(i);
 				instWeka.setDataset(isWeka);
+                                
 				dist = this.distributionForInstance(instWeka);
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
@@ -2532,7 +2531,6 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
 				probabilities[i] = dist;
-              
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])
@@ -2857,6 +2855,8 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 
 		}
 		Files.addToFile(fileName, cadena);
+                
+              
 	}
 
 	/**
@@ -3129,5 +3129,28 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 		}
 	}
+        
+        public void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+        {
+            String output = new String("Probabilistic Output.\n");
+
+            //We write the output for each example
+
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+
+            }
+            output+='\n';
+
+
+            output+='\n';
+            for(int i=0; i<instances; i++)
+            {
+                   output+=(Arrays.toString(probabilities[i])+'\n');
+            }
+            output+='\n';
+            Fichero.escribeFichero(filename, output);    
+        }
 }
 

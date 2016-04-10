@@ -217,16 +217,6 @@ public class KNN extends LazyAlgorithm{
 		prediction=0;
 		predictionValue=selectedClasses[0];
 		
-                /*System.out.println("PROBABILIDAD");
-                for (int i=0; i<nClasses; i++)
-                {
-                   
-                    System.out.println("Apariciones clase "+ (i+1) +" = "+selectedClasses[i] +"Valor k ="+k);
-                    float probabilidad=(float) ((double)selectedClasses[i]/(double)k);
-                    
-                    System.out.println(probabilidad);
-                }
-                    System.out.println("\n");*/
                    
 		for (int i=1; i<nClasses; i++) {
 		    if (predictionValue < selectedClasses[i]) {
