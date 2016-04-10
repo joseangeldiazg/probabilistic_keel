@@ -217,7 +217,7 @@ public class KNN extends LazyAlgorithm{
 		prediction=0;
 		predictionValue=selectedClasses[0];
 		
-                System.out.println("PROBABILIDAD");
+                /*System.out.println("PROBABILIDAD");
                 for (int i=0; i<nClasses; i++)
                 {
                    
@@ -226,7 +226,7 @@ public class KNN extends LazyAlgorithm{
                     
                     System.out.println(probabilidad);
                 }
-                    System.out.println("\n");
+                    System.out.println("\n");*/
                    
 		for (int i=1; i<nClasses; i++) {
 		    if (predictionValue < selectedClasses[i]) {
@@ -240,6 +240,84 @@ public class KNN extends LazyAlgorithm{
 	
 	} //end-method	
 	
+        
+        
+        protected double[] evaluate2 (double example[]) {
+	
+		double minDist[];
+		int nearestN[];
+		int selectedClasses[];
+                double probPrediction[];
+		double dist;
+		int prediction;
+		int predictionValue;
+		boolean stop;
+                double probabilities[];
+
+		nearestN = new int[k];
+		minDist = new double[k];
+                probPrediction = new double [k];
+                int prob [] = new int[k];
+                for (int i=0; i<k; i++) 
+                {
+			nearestN[i] = 0;
+			minDist[i] = Double.MAX_VALUE;
+		}
+		
+	    //KNN Method starts here
+	    
+		for (int i=0; i<trainData.length; i++) {
+		
+		    dist = distance(trainData[i],example);
+
+			if (dist > 0.0){ //leave-one-out
+			
+				//see if it's nearer than our previous selected neighbors
+				stop=false;
+				
+				for(int j=0;j<k && !stop;j++){
+				
+					if (dist < minDist[j]) {
+					    
+						for (int l = k - 1; l >= j+1; l--) {
+							minDist[l] = minDist[l - 1];
+							nearestN[l] = nearestN[l - 1];
+						}	
+						
+						minDist[j] = dist;
+						nearestN[j] = i;
+						stop=true;
+					}
+                                         //System.out.println( nearestN[j]);
+				}
+                                 //System.out.println( "ITERACION");
+			}
+		}
+		probabilities = new double[nClasses];
+		//we have check all the instances... see what is the most present class
+		selectedClasses= new int[nClasses];
+	
+		for (int i=0; i<nClasses; i++) {
+			selectedClasses[i] = 0;
+		}	
+		
+                
+		for (int i=0; i<k; i++) {
+			selectedClasses[trainOutput[nearestN[i]]]+=1;
+		}
+                  		
+		prediction=0;
+		predictionValue=selectedClasses[0];
+		
+                for (int i=0; i<nClasses; i++)
+                {           
+                    probabilities[i]=(double) ((double)selectedClasses[i]/(double)k);
+                    
+                }
+                  return probabilities;
+	}
+        
+        
 	/** 
 	 * Computes the distance between two instances
 	 * 

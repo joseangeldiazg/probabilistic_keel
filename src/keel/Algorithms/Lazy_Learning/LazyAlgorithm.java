@@ -38,6 +38,7 @@ import keel.Dataset.Attribute;
 import keel.Dataset.Attributes;
 import keel.Dataset.Instance;
 import keel.Dataset.InstanceSet;
+import org.core.Fichero;
 
 import org.core.Files;
 
@@ -870,18 +871,16 @@ public abstract class LazyAlgorithm {
                         
 		}
 		
-		/*for(int i=0; i< probabilities.length; i++){
-			System.out.println(prediction[i][0]);
-			System.out.println(probabilities[i][0]);
-		}
-*/
+		
+                
 		testTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
 		
 		//Writing results
 		writeOutput(outFile[1], realClass, prediction);	
-	//System.out.println(name+" "+ relation + " Test " + testTime + "s");
+                //System.out.println(name+" "+ relation + " Test " + testTime + "s");
 		
 		printOutput();
+                generateProbabilisticOutput(probabilities, this.nClasses,this.testData.length, "./output/KNN/salidaProbabilistica.txt");
 		
 	}//end-method 
 	
@@ -906,9 +905,7 @@ public abstract class LazyAlgorithm {
 	 * @return Vector with the probability for each class.
 	 * 
 	 */
-	protected double[] evaluate2(double example[]){
-		return null;
-	};
+	protected abstract double[] evaluate2(double example[]);
         
 	/** 
 	 * Calculates the Euclidean distance between two instances
@@ -1358,6 +1355,29 @@ public abstract class LazyAlgorithm {
 		return kappa;
 		
 	}//end-method 
+        
+        private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+    {
+        String output = new String("Probabilistic Output.\n");
+     
+        //We write the output for each example
+        
+        for(int i=0; i<numClasses; i++)
+        {
+               output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+               
+        }
+        output+='\n';
+        
+        
+        output+='\n';
+        for(int i=0; i<instances; i++)
+        {
+               output+=(Arrays.toString(probabilities[i])+'\n');
+        }
+        output+='\n';
+        Fichero.escribeFichero(filename, output);    
+    }
 	
 }//end-class
 
