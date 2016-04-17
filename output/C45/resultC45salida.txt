@@ -1,0 +1,53 @@
+@relation  iris
+@attribute sepalLength real[4.3,7.9]
+@attribute sepalWidth real[2.0,4.4]
+@attribute petalLength real[1.0,6.9]
+@attribute petalWidth real[0.1,2.5]
+@attribute class{Iris-setosa,Iris-versicolor,Iris-virginica}
+@inputs sepalLength,sepalWidth,petalLength,petalWidth
+@outputs class
+@data
+
+@decisiontree
+
+if ( petalWidth <= 0.500000 ) then
+{
+	class = "Iris-setosa"
+}
+elseif ( petalWidth > 0.500000 ) then
+{
+	if ( petalWidth <= 1.700000 ) then
+	{
+		if ( petalLength <= 5.000000 ) then
+		{
+			class = "Iris-versicolor"
+		}
+		elseif ( petalLength > 5.000000 ) then
+		{
+			class = "Iris-virginica"
+		}
+	}
+	elseif ( petalWidth > 1.700000 ) then
+	{
+		class = "Iris-virginica"
+	}
+}
+
+@TotalNumberOfNodes 3
+@NumberOfLeafs 4
+@TotalNumberOfNodes 3
+@NumberOfAntecedentsByRule 2.25
+
+@NumberOfItemsetsTraining 135
+@NumberOfCorrectlyClassifiedTraining 132
+@PercentageOfCorrectlyClassifiedTraining 97.77778%
+@NumberOfInCorrectlyClassifiedTraining 3
+@PercentageOfInCorrectlyClassifiedTraining 2.2222223%
+
+@NumberOfItemsetsTest 15
+@NumberOfCorrectlyClassifiedTest 13
+@PercentageOfCorrectlyClassifiedTest 86.666664%
+@NumberOfInCorrectlyClassifiedTest 2
+@PercentageOfInCorrectlyClassifiedTest 13.333333%
+
+@ElapsedTime 0:0:0

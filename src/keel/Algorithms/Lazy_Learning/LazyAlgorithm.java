@@ -1364,7 +1364,7 @@ public abstract class LazyAlgorithm {
         
         for(int i=0; i<numClasses; i++)
         {
-               output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+               output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
                
         }
         output+='\n';

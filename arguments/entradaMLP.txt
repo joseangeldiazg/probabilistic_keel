@@ -1,0 +1,20 @@
+algorithm = MLP Neural Network
+inputData = "./datasets/iris/iris-5x2-1tra.dat" "./datasets/iris/iris-5x2-1tra.dat" "./datasets/iris/iris-5x2-1tst.dat"  
+outputData = "./output/MLP/result0s0.tra" "./output/MLP/result0s0.tst" "./output/MLP/result0s0e0.txt"  
+
+seed = 1286082570
+Hidden_layers = 2
+Hidden_nodes = 15
+Transfer = Htan
+Eta = 0.15
+Alpha = 0.10
+Lambda = 0.0
+Test_data = true
+Validation_data = false
+Cross_validation = false
+Cycles = 10000
+Improve = 0.01
+Problem = Classification
+Tipify_inputs = true
+Verbose = false
+SaveAll = false
