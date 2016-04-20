@@ -232,6 +232,7 @@ public class KNN extends LazyAlgorithm{
 	
         
         
+        @Override
         protected double[] evaluate2 (double example[]) {
 	
 		double minDist[];

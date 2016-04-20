@@ -1,7 +1,6 @@
 algorithm = MLP Neural Network
-inputData = "./datasets/ecoli-0_vs_1/ecoli-0_vs_1-5-1tra.dat" "./datasets/ecoli-0_vs_1/ecoli-0_vs_1-5-1tra.dat" "./datasets/ecoli-0_vs_1/ecoli-0_vs_1-5-1tst.dat" 
-outputData = "./output/MLP/result0s0.tra" "./output/MLP/result0s0.tst" "./output/MLP/result0s0e0.txt" 
-
+inputData = "./datasets/iris/iris-10-1tra.dat" "./datasets/iris/iris-10-1tra.dat" "./datasets/iris/iris-10-1tst.dat" 
+outputData = "./output/MLP/result0s0.tra" "./output/MLP/result0s0.tst" "./output/MLP/result0s0e0.txt"  
 
 seed = 1286082570
 Hidden_layers = 2

@@ -3042,7 +3042,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 	}
 
 	/**
-	 * Normalize the input value according to the provided attribute 
+	 * the input value according to the provided attribute 
 	 * @param value The value to be normalized
 	 * @param a The attribute to which value belongs
 	 * @return A new double value in the range [0,1]

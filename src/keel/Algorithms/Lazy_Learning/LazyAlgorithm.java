@@ -905,7 +905,10 @@ public abstract class LazyAlgorithm {
 	 * @return Vector with the probability for each class.
 	 * 
 	 */
-	protected abstract double[] evaluate2(double example[]);
+	protected double[] evaluate2(double example[])
+        {
+            return null;
+        };
         
 	/** 
 	 * Calculates the Euclidean distance between two instances

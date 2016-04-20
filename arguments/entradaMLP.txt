@@ -1,5 +1,5 @@
 algorithm = MLP Neural Network
-inputData = "./datasets/iris/iris-5x2-1tra.dat" "./datasets/iris/iris-5x2-1tra.dat" "./datasets/iris/iris-5x2-1tst.dat"  
+inputData = "./datasets/ecoli/ecoli-0_vs_1-5-1tra.dat" "./datasets/ecoli/ecoli-0_vs_1-5-1tra.dat" "./datasets/ecoli/ecoli-0_vs_1-5-1tst.dat"  
 outputData = "./output/MLP/result0s0.tra" "./output/MLP/result0s0.tst" "./output/MLP/result0s0e0.txt"  
 
 seed = 1286082570

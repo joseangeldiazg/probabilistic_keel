@@ -438,7 +438,7 @@ public class Classification {
     {
         if (total != 0) 
         {
-            return perClass[classIndex] / total;
+            return (perClass[classIndex]) / (total);
         } 
         else 
         {
@@ -456,7 +456,7 @@ public class Classification {
     {
         if (perValue[attIndex] > 0) 
         {
-            return perClassPerValue[attIndex][classIndex]/ perValue[attIndex];
+            return (perClassPerValue[attIndex][classIndex])/ (perValue[attIndex]);
         } 
         else 
         {

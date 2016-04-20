@@ -36,6 +36,7 @@ import java.io.FileInputStream;
 import java.io.DataInputStream;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 
 import keel.Dataset.*;
 import org.core.*;
@@ -229,9 +230,13 @@ public class Network {
             for (int j = 1; j < Noutputs; j++) {
                 if (data[i][Class + Ninputs] < data[i][j + Ninputs]) {
                     Class = j;
-
+                    
+                    
                     // Test if correctly classified
                 }
+                
+                System.out.println(data[i][Class + Ninputs]);
+                    System.out.println(data[i][j + Ninputs]);
             }
             if (Class == max_index) {
                 ok++;
@@ -360,6 +365,7 @@ public class Network {
                                  global.lambda * w[k][i][j];
                         w[k][i][j] += change;
                         momentum[k][i][j] = change;
+                         
                     }
                 }
             }
@@ -484,7 +490,7 @@ public class Network {
             for (int i = 0; i < Nhidden[k + 1]; i++) {
                 for (int j = 0; j < Nhidden[k]; j++) {
                 	Files.addToFile(file_name,Double.toString(w[k][i][j])+" ");
-
+                        
                 }
             }
         }
@@ -614,15 +620,19 @@ public class Network {
 
         // Obtain network output
         GenerateOutput(pattern);
-
+        double [] norm;
+   
         // Classify pattern
         int max_index = 0;
         for (int j = 1; j < Noutputs; j++) {
             if (activation[Nlayers - 1][max_index] < activation[Nlayers - 1][j]) {
                 max_index = j;
-
-            }
+                
+            }           
         }
+        norm= normalize(activation[Nlayers - 1]);
+        normalize(norm);
+        System.out.println(Arrays.toString(norm));
         return max_index;
     }
 
@@ -741,7 +751,60 @@ public class Network {
         }
 
     }
+    
+    
+    /**
+   * Normalizes the doubles in the array using the given value.
+   *
+   * @param doubles the array of double
+     * @return 
+   * @exception IllegalArgumentException if sum is zero or NaN
+   */
+  
+  public double[] normalize(double[] doubles) {
 
+    double normalize[];
+    normalize = new double[doubles.length];
+    
+    
+    double max= max(doubles);
+    double min= min(doubles);
+    
+  
+    for(int i=0; i<doubles.length; i++)
+    {
+        normalize[i]=((doubles[i])-(min))/((max)-(min));  
+    }
+    return normalize;
+  }
+  
+    public double min(double[] doubles) 
+    { 
+        double resultado = 0; 
+        for(int i=0; i<doubles.length; i++) 
+        { 
+            if(doubles[i] < resultado) 
+            { 
+                resultado = doubles[i]; 
+            } 
+        } 
+        
+        return resultado; 
+    } 
+
+    public double max(double[] doubles) 
+    { 
+        double resultado =0; 
+        for(int i=0; i<doubles.length; i++) 
+        { 
+            if(doubles[i] > resultado) 
+            { 
+                resultado = doubles[i]; 
+            } 
+        } 
+        
+        return resultado; 
+    } 
     /* private void BackPropagationErrorMax(Parameters global, int cycles,
                                           double data[][],
                                           int npatterns, Sample sample) {

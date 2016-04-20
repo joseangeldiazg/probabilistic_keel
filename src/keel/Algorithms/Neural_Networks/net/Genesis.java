@@ -145,7 +145,7 @@ public class Genesis {
             DatasetToArray(data.validation, validation);
 
         }
-        // TODO Print of weight matrix
+       /* // TODO Print of weight matrix
              System.out.println (global.Ninputs +" "+ global.Noutputs);
              //FileWriter writer = new FileWriter("./matriz.txt");
              for (int f=0; f< global.n_train_patterns; f++)
@@ -160,7 +160,7 @@ public class Genesis {
 		 //writer.write("\n");
              }
          //    writer.close();
-         /************************************** 
+         /************************************** */
 
         if (global.tipify_inputs == true) {
             data.TipifyInputData(global);
