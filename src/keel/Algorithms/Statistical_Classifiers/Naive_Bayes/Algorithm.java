@@ -57,10 +57,13 @@ public class Algorithm {
     int counts[][][]; //atribute value, atribute position, class
     int nClasses;
     
-    //This matrix is used to store de probabilities
+    //This matrix is used to store the train probabilities
     
     double probabilities[][] = null;
 
+    //This matrix is used to store the test probabilities
+    
+    double probabilitiesTst[][]=null;
     //We may declare here the algorithm's parameters
 
     private boolean somethingWrong = false; //to check if everything is correct.
@@ -131,7 +134,7 @@ public class Algorithm {
             //Initialize de matrix of probabilities 
             
             this.probabilities = new double [train.getnData()][this.nClasses];
-            
+            this.probabilitiesTst = new double [test.getnData()][this.nClasses];
             
             computeProbabilites();
 
@@ -140,12 +143,13 @@ public class Algorithm {
             doOutput(this.test, this.outputTst);
             
             
-            doOutput(this.val, this.outputTr);
-            doOutput(this.test, this.outputTst);
+            /*doOutput(this.val, this.outputTr);
+            doOutput(this.test, this.outputTst);*/
            
-            doOutputProb(this.val);
+            doOutputProb(this.val, this.test);
             
-            generateProbabilisticOutput(probabilities,nClasses,train.getnData(),"./output/NB/probabilisticNB.txt");
+            generateProbabilisticOutput(probabilities,nClasses,train.getnData(),this.outputTr.replace(".tra","prob.tra"));
+            generateProbabilisticOutput(probabilitiesTst,nClasses,test.getnData(),this.outputTst.replace(".tst","prob.tst"));
             
             generateOutputInfo();
             System.out.println("Algorithm Finished");
@@ -170,11 +174,15 @@ public class Algorithm {
     }    
     
     
-    private void doOutputProb(myDataset dataset) 
+    private void doOutputProb(myDataset training, myDataset test) 
     {
-        for (int i = 0; i < dataset.getnData(); i++) 
+        for (int i = 0; i < training.getnData(); i++) 
         {   
-                probabilities[i]=this.classificationOutputProb(dataset.getExample(i),dataset.getMissing(i));
+                probabilities[i]=this.classificationOutputProb(training.getExample(i),training.getMissing(i));
+        }
+        for (int i = 0; i < test.getnData(); i++)
+        {
+                probabilitiesTst[i]=this.classificationOutputProb(test.getExample(i), test.getMissing(i));
         }
     }
 
