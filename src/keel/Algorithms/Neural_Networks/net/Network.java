@@ -75,6 +75,10 @@ public class Network {
     /** Transfer function of each layer (LOG | HTAN | LINEAR)*/
     public String transfer[];
 
+    /**Matrix for the probabilities of test and train files*/
+    public double[][] probabilitiesTst=null;
+    public double[][] probabilitiesTra=null;
+    
     /**
      * Empty Constructor.
      */
@@ -630,11 +634,31 @@ public class Network {
                 
             }           
         }
-        norm= normalize(activation[Nlayers - 1]);
-        normalize(norm);
-        System.out.println(Arrays.toString(norm));
+        //norm= normalize(activation[Nlayers - 1]);
+        //normalize(norm);
+        //System.out.println(Arrays.toString(norm));
         return max_index;
     }
+    
+    
+    /**
+     * <p>
+     * Return the class where a pattern is classified
+     * </p>
+     * @param pattern Pattern to check
+     * @return Class index
+     */
+    public double[] NetGetProbOfPattern(double pattern[]) {
+
+        // Obtain network output
+        GenerateOutput(pattern);
+        double [] norm;
+   
+        norm= normalize(activation[Nlayers - 1]);
+        normalize(norm);
+        return norm;
+    }
+    
 
     /**
      * <p>
@@ -671,11 +695,10 @@ public class Network {
                                String problem, double[] a, double[] b) {
         String line;
 
-        try {
-            // Result file
-            FileOutputStream file = new FileOutputStream(file_name);
-            BufferedWriter f = new BufferedWriter(new OutputStreamWriter(file));
-
+        try ( // Result file
+                FileOutputStream file = new FileOutputStream(file_name); 
+                BufferedWriter f = new BufferedWriter(new OutputStreamWriter(file))) {
+            
             // File header
             f.write("@relation " + Attributes.getRelationName() + "\n");
             f.write(Attributes.getInputAttributesHeader());
@@ -683,7 +706,6 @@ public class Network {
             f.write(Attributes.getInputHeader() + "\n");
             f.write(Attributes.getOutputHeader() + "\n");
             f.write("@data\n");
-
             // For all patterns
             for (int i = 0; i < n; i++) {
 
@@ -702,10 +724,12 @@ public class Network {
                     if(tipo!=Attribute.NOMINAL){
                     	f.write(Integer.toString(Class) + " ");
                     	f.write(Integer.toString(NetGetClassOfPattern(data[i])));
+                        System.out.println(Arrays.toString(NetGetProbOfPattern(data[i])));
                   	}
                   	else{
                   		f.write(aa.getNominalValue(Class) + " ");
                     	f.write(aa.getNominalValue(NetGetClassOfPattern(data[i])));
+                        System.out.println(Arrays.toString(NetGetProbOfPattern(data[i])));
                   	}
                   	f.newLine();
                 }
@@ -740,8 +764,6 @@ public class Network {
                     }
                 }
             }
-            f.close();
-            file.close();
         } catch (FileNotFoundException e) {
             System.err.println("Cannot created output file");
             System.exit( -1);

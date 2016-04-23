@@ -7,9 +7,9 @@ Unclassified instances (Training): 0
 Reduction (instances): 0.0
 Reduction (features): 0.0
 Reduction (both): 0.0
-Model time: 0.0 s
-Training time: 0.024 s
-Test time: 0.002 s
+Model time: 0.001 s
+Training time: 0.012 s
+Test time: 0.001 s
 Confussion Matrix:
 5	0	0	
 0	5	1	

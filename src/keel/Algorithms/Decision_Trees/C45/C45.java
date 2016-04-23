@@ -31,6 +31,8 @@ package keel.Algorithms.Decision_Trees.C45;
 
 import java.io.*;
 import java.util.Arrays;
+import keel.Dataset.Attributes;
+import org.core.Fichero;
 
 /**
  * Class to implement the C4.5 algorithm
@@ -65,7 +67,11 @@ public class C45 extends Algorithm {
 
     /** The sum of counts for priors. */
     private double classPriorsSum;
+    
+    /** Matrix for the probabilities */
 
+    private double[][] probabilitiesTst=null;
+    private double[][] probabilitiesTra=null;
     /** Constructor.
      *
      * @param paramFile		The parameters file.
@@ -532,12 +538,12 @@ public class C45 extends Algorithm {
      */
     public void printTrain() {
         String text = getHeader();
-
+        this.probabilitiesTra = new double[trainDataset.numItemsets()][trainDataset.numClasses()];
         for (int i = 0; i < trainDataset.numItemsets(); i++) {
             try {
                 Itemset itemset = trainDataset.itemset(i);
                 int cl = (int) evaluateItemset(itemset);
-
+                probabilitiesTra[i]=classificationForItemset(itemset);
                 if (cl == (int) itemset.getValue(trainDataset.getClassIndex())) {
                     correct++;
                 }
@@ -555,6 +561,8 @@ public class C45 extends Algorithm {
                     trainOutputFileName));
             print.print(text);
             print.close();
+            generateProbabilisticOutput(probabilitiesTra, trainDataset.numClasses(),trainDataset.numItemsets(), trainOutputFileName.replace(".tra","prob.tra"));
+            
         } catch (IOException e) {
             System.err.println("Can not open the training output file: " +
                                e.getMessage());
@@ -566,12 +574,12 @@ public class C45 extends Algorithm {
      */
     public void printTest() {
         String text = getHeader();
-
+        this.probabilitiesTst = new double[testDataset.numItemsets()][testDataset.numClasses()];
         for (int i = 0; i < testDataset.numItemsets(); i++) {
             try {
                 int cl = (int) evaluateItemset(testDataset.itemset(i));
                 Itemset itemset = testDataset.itemset(i);
-
+                probabilitiesTst[i]=classificationForItemset(itemset);
                 if (cl == (int) itemset.getValue(testDataset.getClassIndex())) {
                     testCorrect++;
                 }
@@ -583,12 +591,13 @@ public class C45 extends Algorithm {
                 System.err.println(e.getMessage());
             }
         }
-
         try {
             PrintWriter print = new PrintWriter(new FileWriter(
                     testOutputFileName));
             print.print(text);
             print.close();
+            generateProbabilisticOutput(probabilitiesTst, testDataset.numClasses(),testDataset.numItemsets(), testOutputFileName.replace(".tst","prob.tst"));
+            
         } catch (IOException e) {
             System.err.println("Can not open the training output file.");
         }
@@ -618,6 +627,31 @@ public class C45 extends Algorithm {
         return tree;
 
       }
+    
+    public void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+    {
+            String output = new String("Probabilistic Output.\n");
+
+            //We write the output for each example
+
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+
+            }
+            output+='\n';
+
+
+            output+='\n';
+            for(int i=0; i<instances; i++)
+            {
+                   output+=(Arrays.toString(probabilities[i])+'\n');
+            }
+            output+='\n';
+            Fichero.escribeFichero(filename, output);    
+    }
+    
+    
 
     /** Main function.
      *

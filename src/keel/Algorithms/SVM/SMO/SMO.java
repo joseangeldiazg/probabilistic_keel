@@ -230,7 +230,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
      * SMO probabilities.
      */
     public double [][] probabilities = null;
-	
+    public double [][] probabilitiesTst=null;
 	/**
 	 * Returns a string describing classifier
 	 * @return a description suitable for
@@ -1525,14 +1525,6 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 			Utils.normalize(result);
                         
-//                        Llegados a este punto es necesario obtener las probabilidades. 
-//                        Normalizamos y obtenemos en un bucle que itera segun el numero
-//                        de clases a considerar. 
-                        
-                        for(int i=0; i<inst.numClasses();i++)
-                        {
-                            System.out.println(result[i]);
-                        }           
 			return result;
 		} else {
 
@@ -2396,7 +2388,13 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 			writeOutput(output_train_name, instanciasIN, instanciasOUT, Attributes.getInputAttributes(),
 					Attributes.getOutputAttribute(0), Attributes.getInputNumAttributes(), "relation");
-		}catch(Exception ex){
+                        
+                        
+                        //Write the probabilities for training file
+                        
+                        generateProbabilisticOutput(probabilities,m_NumClasses,probabilities.length, output_train_name.replace(".tra", "prob.tra"));
+		
+                }catch(Exception ex){
 			System.err.println("Fatal Error building the SMO model!");
 			ex.printStackTrace();
 		};
@@ -2410,12 +2408,13 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			int tipo = a.getType();
 			instanciasIN = new String[IS.getNumInstances()];
 			instanciasOUT = new String[IS.getNumInstances()];
-
+                        this.probabilitiesTst = new double[isWeka.numInstances()][this.m_NumClasses];
 			for (int i = 0; i < isWeka.numInstances();i++) {
 				keel.Dataset.Instance inst = IS.getInstance(i);
 				instWeka = isWeka.instance(i);
 				instWeka.setDataset(isWeka);
 				dist = this.distributionForInstance(instWeka);
+                                probabilitiesTst[i]=dist;
 				int claseObt = 0;
 				for(int j=1;j<m_NumClasses;j++){
 					if(dist[j]>dist[claseObt])
@@ -2432,6 +2431,11 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 			}
 			writeOutput(output_test_name, instanciasIN, instanciasOUT, Attributes.getInputAttributes(),
 					Attributes.getOutputAttribute(0), Attributes.getInputNumAttributes(), "relation");
+                        
+                        //Write test probabilities 
+                        
+                        generateProbabilisticOutput(probabilitiesTst,m_NumClasses,probabilitiesTst.length, output_test_name.replace(".tst", "prob.tst"));
+                        
 		}catch(Exception ex){
 			System.err.println("Fatal Error performing test by the SMO model!");
 			ex.printStackTrace();

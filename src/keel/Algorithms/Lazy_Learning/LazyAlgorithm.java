@@ -257,7 +257,13 @@ public abstract class LazyAlgorithm {
      */
     protected int trainPrediction[][];
 	
-	
+    
+    /**
+     * Matrix with the probabilities of training and test
+     */
+      protected double probabilitiesTst[][];
+      protected double probabilitiesTra[][];
+    
 	/** 
 	 * Set the training and the test dataset with their classes given as argument. 
 	 *  
@@ -783,7 +789,7 @@ public abstract class LazyAlgorithm {
 		
 		modelTime=((double)System.currentTimeMillis()-initialTime)/1000.0;
 	//	System.out.println(name+" "+ relation + " Model " + modelTime + "s");
-		
+		this.
 		trainRealClass = new int[trainData.length][1];
 		trainPrediction = new int[trainData.length][1];	
 		
@@ -861,6 +867,7 @@ public abstract class LazyAlgorithm {
 		setInitialTime();
 		
 		probabilities = new double[this.testData.length][this.nClasses];
+                
 		predictions = new  int[this.testData.length];
 		
 		for (int i=0; i<realClass.length; i++) {
@@ -880,13 +887,54 @@ public abstract class LazyAlgorithm {
                 //System.out.println(name+" "+ relation + " Test " + testTime + "s");
 		
 		printOutput();
-                generateProbabilisticOutput(probabilities, this.nClasses,this.testData.length, "./output/KNN/salidaProbabilistica.txt");
-		
 	}//end-method 
 	
-	
-	
-	
+        
+        
+        /** 
+	 * Executes the classification of reference and test data sets. Probabilistic output. 
+	 * 
+	 */
+	public void executeReferenceProbabilistic(){
+		
+		trainRealClass = new int[referenceData.length][1];
+		trainPrediction = new int[referenceData.length][1];	
+		
+                probabilitiesTst = new double[this.testData.length][this.nClasses];
+                probabilitiesTra = new double[this.trainData.length][this.nClasses];
+                
+		
+		//Working on training
+		for (int i=0; i<trainRealClass.length; i++)
+                {			
+                     probabilitiesTra[i]=evaluate2(trainData[i]);
+		}
+
+		//Writing results
+
+		generateProbabilisticOutput(probabilitiesTra, this.nClasses,this.trainData.length, outFile[0].replace(".tra", "prob.tra"));
+                
+                
+		//Working on test
+		realClass = new int[testData.length][1];
+		prediction = new int[testData.length][1];	
+		
+		//Check  time		
+		setInitialTime();
+		
+		probabilitiesTst = new double[this.testData.length][this.nClasses];
+                               
+		predictions = new  int[this.testData.length];
+		
+		for (int i=0; i<realClass.length; i++)
+                {
+			probabilitiesTst[i] = evaluate2(testData[i]);
+                        
+		}
+		          		
+                generateProbabilisticOutput(probabilitiesTst, this.nClasses,this.testData.length, outFile[1].replace(".tst", "prob.tst"));
+		
+	}
 	
 	/** 
 	 * Evaluates a instance to predict its class. 
@@ -1360,26 +1408,26 @@ public abstract class LazyAlgorithm {
 	}//end-method 
         
         private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
-    {
-        String output = new String("Probabilistic Output.\n");
-     
-        //We write the output for each example
-        
-        for(int i=0; i<numClasses; i++)
         {
-               output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
-               
-        }
-        output+='\n';
-        
-        
-        output+='\n';
-        for(int i=0; i<instances; i++)
-        {
-               output+=(Arrays.toString(probabilities[i])+'\n');
-        }
-        output+='\n';
-        Fichero.escribeFichero(filename, output);    
+            String output = new String("Probabilistic Output.\n");
+
+            //We write the output for each example
+
+            for(int i=0; i<numClasses; i++)
+            {
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
+
+            }
+            output+='\n';
+
+
+            output+='\n';
+            for(int i=0; i<instances; i++)
+            {
+                   output+=(Arrays.toString(probabilities[i])+'\n');
+            }
+            output+='\n';
+            Fichero.escribeFichero(filename, output);    
     }
 	
 }//end-class

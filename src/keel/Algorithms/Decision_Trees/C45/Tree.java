@@ -240,9 +240,6 @@ public class Tree {
         for (int i = 0; i < doubles.length; i++) {
             doubles[i] = getProbabilities(i, itemset, 1);
         }
-        
-       //PROBABILITY 
-        System.out.println(Arrays.toString(doubles));
         return doubles;
     }
 

@@ -276,15 +276,19 @@ public class Genesis {
                                    100.0 * res);
             }
         }
+        
         neural.SaveOutputFile(global.train_output, data.train, //data.validation,
                               global.n_train_patterns, global.problem, data.a, data.b); // global.n_val_patterns, global.problem);
+                              System.err.println("TRAIN");
         if (global.test_data) {
 			neural.SaveOutputFile(global.test_output, data.test,
                                   global.n_test_patterns, global.problem, data.a, data.b);
+                        System.err.println("TEST");
         }
         if (global.val_data) {
 			neural.SaveOutputFile(global.val_output, data.validation,
                                   global.n_val_patterns, global.problem, data.a, data.b);
+                        
         }
 
     }

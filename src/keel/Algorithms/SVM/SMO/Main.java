@@ -64,9 +64,6 @@ public class Main {
 		else {
 			model = new SMO (args[0]);
 			model.runModel();
-                       
-                        model.generateProbabilisticOutput(model.probabilities, model.m_NumClasses,model.probabilities.length, "./output/SMO/salidaProbabilistica.txt");
-                        
 
 		}
 	}

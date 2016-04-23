@@ -31,11 +31,14 @@
 
 package keel.Algorithms.Lazy_Learning.KNN;
 
+import java.util.Arrays;
 import keel.Algorithms.Lazy_Learning.LazyAlgorithm;
 import keel.Dataset.Attribute;
 
 import org.core.Files;
 import java.util.StringTokenizer;
+import keel.Dataset.Attributes;
+import org.core.Fichero;
 
 /**
  * 
@@ -71,6 +74,7 @@ public class KNN extends LazyAlgorithm{
 	
 	private double stdDev [];
 	private double nominalDistance [][][];
+      
 	
 	/** 
 	 * The main method of the class
@@ -96,7 +100,8 @@ public class KNN extends LazyAlgorithm{
 		}
 		
 		//Initialization stuff ends here. So, we can start time-counting
-		
+		this.probabilitiesTst= new double[this.testData.length][this.nClasses];
+                this.probabilitiesTra= new double[this.trainData.length][this.nClasses];
 		setInitialTime();
 		
 	} //end-method 
@@ -448,6 +453,6 @@ public class KNN extends LazyAlgorithm{
 		return result;  
 		
 	}//end-method	
-	
+	     
 } //end-class 
 
