@@ -912,7 +912,7 @@ public abstract class LazyAlgorithm {
 
 		//Writing results
 
-		generateProbabilisticOutput(probabilitiesTra, this.nClasses,this.trainData.length, outFile[0].replace(".tra", "prob.tra"));
+		generateProbabilisticOutput(probabilitiesTra, this.nClasses,this.trainData.length, outFile[0]);
                 
                 
 		//Working on test
@@ -932,7 +932,7 @@ public abstract class LazyAlgorithm {
                         
 		}
 		          		
-                generateProbabilisticOutput(probabilitiesTst, this.nClasses,this.testData.length, outFile[1].replace(".tst", "prob.tst"));
+                generateProbabilisticOutput(probabilitiesTst, this.nClasses,this.testData.length, outFile[1]);
 		
 	}
 	
@@ -1407,9 +1407,26 @@ public abstract class LazyAlgorithm {
 		
 	}//end-method 
         
+   /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
         private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
         {
-            String output = new String("Probabilistic Output.\n");
+            int dot = filename.lastIndexOf(".");
+            int sep = filename.lastIndexOf("/");
+            String extension=filename.substring(dot + 1);   
+            String name =filename.substring(sep + 1, dot);
+            String path = filename.substring(0, sep);
+            
+            String outputFile=path+"/Prob"+name+"."+extension;    
+                
+            String output = "Probabilistic Output.\n";
 
             //We write the output for each example
 
@@ -1424,10 +1441,13 @@ public abstract class LazyAlgorithm {
             output+='\n';
             for(int i=0; i<instances; i++)
             {
-                   output+=(Arrays.toString(probabilities[i])+'\n');
+                   for(int j=0;j<probabilities[i].length;j++)
+                   {
+                      output+=probabilities[i][j]+", "; 
+                   }
+                   output+="\n";
             }
-            output+='\n';
-            Fichero.escribeFichero(filename, output);    
+           Fichero.escribeFichero(outputFile, output);  
     }
 	
 }//end-class

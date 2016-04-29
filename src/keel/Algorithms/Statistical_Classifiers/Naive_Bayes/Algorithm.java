@@ -148,8 +148,8 @@ public class Algorithm {
            
             doOutputProb(this.val, this.test);
             
-            generateProbabilisticOutput(probabilities,nClasses,train.getnData(),this.outputTr.replace(".tra","prob.tra"));
-            generateProbabilisticOutput(probabilitiesTst,nClasses,test.getnData(),this.outputTst.replace(".tst","prob.tst"));
+            generateProbabilisticOutput(probabilities,nClasses,train.getnData(),this.outputTr);
+            generateProbabilisticOutput(probabilitiesTst,nClasses,test.getnData(),this.outputTst);
             
             generateOutputInfo();
             System.out.println("Algorithm Finished");
@@ -370,10 +370,25 @@ public class Algorithm {
         }
         Fichero.escribeFichero(output,string);
     }
-    
+    /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
     
     private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
     {
+        
+        int dot = filename.lastIndexOf(".");
+        int sep = filename.lastIndexOf("/");
+        String extension=filename.substring(dot + 1);   
+        String name =filename.substring(sep + 1, dot);
+        String path = filename.substring(0, sep);
+        String outputFile=path+"/Prob"+name+"."+extension;  
         String output = new String("Probabilistic Output.\n");
      
         //We write the output for each example
@@ -384,10 +399,14 @@ public class Algorithm {
         output+='\n';
         for(int i=0; i<instances; i++)
         {
-               output+=(Arrays.toString(probabilities[i])+'\n');
+               for(int j=0;j<probabilities[i].length;j++)
+               {
+                      output+=probabilities[i][j]+", "; 
+               }
+               output+="\n";
         }
         output+='\n';
-        Fichero.escribeFichero(filename, output);    
+        Fichero.escribeFichero(outputFile, output);    
     }
 }
 

@@ -2392,7 +2392,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
                         
                         //Write the probabilities for training file
                         
-                        generateProbabilisticOutput(probabilities,m_NumClasses,probabilities.length, output_train_name.replace(".tra", "prob.tra"));
+                        generateProbabilisticOutput(probabilities,m_NumClasses,probabilities.length, output_train_name);
 		
                 }catch(Exception ex){
 			System.err.println("Fatal Error building the SMO model!");
@@ -2434,7 +2434,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
                         
                         //Write test probabilities 
                         
-                        generateProbabilisticOutput(probabilitiesTst,m_NumClasses,probabilitiesTst.length, output_test_name.replace(".tst", "prob.tst"));
+                        generateProbabilisticOutput(probabilitiesTst,m_NumClasses,probabilitiesTst.length, output_test_name);
                         
 		}catch(Exception ex){
 			System.err.println("Fatal Error performing test by the SMO model!");
@@ -3134,15 +3134,32 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
 		}
 	}
         
+   /**
+   * Function used to generate the output file with the probabilities for each instance and class
+   *
+   * @param probabilities the matrix with the probabilities
+   * @param numClasses the number of classes in the problem
+   * @param instances the number of intances in the problem
+   * @param filename the string with the name of the output file
+   * 
+   */
         public void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
         {
-            String output = new String("Probabilistic Output.\n");
+            int dot = filename.lastIndexOf(".");
+            int sep = filename.lastIndexOf("/");
+            String extension=filename.substring(dot + 1);   
+            String name =filename.substring(sep + 1, dot);
+            String path = filename.substring(0, sep);
+            
+            String outputFile=path+"/Prob"+name+"."+extension;    
+                
+            String output = "Probabilistic Output.\n";
 
             //We write the output for each example
 
             for(int i=0; i<numClasses; i++)
             {
-                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
 
             }
             output+='\n';
@@ -3151,10 +3168,13 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
             output+='\n';
             for(int i=0; i<instances; i++)
             {
-                   output+=(Arrays.toString(probabilities[i])+'\n');
+                   for(int j=0;j<probabilities[i].length;j++)
+                   {
+                      output+=probabilities[i][j]+", "; 
+                   }
+                   output+="\n";
             }
-            output+='\n';
-            Fichero.escribeFichero(filename, output);    
+           Fichero.escribeFichero(outputFile, output);
         }
 }
 

@@ -1,0 +1,24 @@
+
+Class Iris-setosa: Prior probability = 0.3333333333333333
+sepalLength: Discrete Estimator. Counts = 7 0 15 3 0 0 0 0 0 0 0 0 0 0 (Total = 25)
+sepalWidth: Discrete Estimator. Counts = 0 0 0 0 1 1 3 0 20 (Total = 25)
+petalLength: Discrete Estimator. Counts = 25 0 0 0 0 (Total = 25)
+petalWidth: Discrete Estimator. Counts = 25 0 0 (Total = 25)
+
+
+
+Class Iris-versicolor: Prior probability = 0.3333333333333333
+sepalLength: Discrete Estimator. Counts = 0 1 3 5 3 0 3 4 0 1 2 2 1 0 (Total = 25)
+sepalWidth: Discrete Estimator. Counts = 1 6 2 8 2 3 2 1 0 (Total = 25)
+petalLength: Discrete Estimator. Counts = 0 22 2 1 0 (Total = 25)
+petalWidth: Discrete Estimator. Counts = 0 24 1 (Total = 25)
+
+
+
+Class Iris-virginica: Prior probability = 0.3333333333333333
+sepalLength: Discrete Estimator. Counts = 0 0 0 0 3 2 1 4 4 0 3 2 0 6 (Total = 25)
+sepalWidth: Discrete Estimator. Counts = 1 1 2 5 8 1 3 3 1 (Total = 25)
+petalLength: Discrete Estimator. Counts = 0 0 2 0 23 (Total = 25)
+petalWidth: Discrete Estimator. Counts = 0 2 23 (Total = 25)
+
+
