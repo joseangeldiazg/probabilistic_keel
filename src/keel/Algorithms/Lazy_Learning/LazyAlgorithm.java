@@ -906,13 +906,13 @@ public abstract class LazyAlgorithm {
 		
 		//Working on training
 		for (int i=0; i<trainRealClass.length; i++)
-                {			
-                     probabilitiesTra[i]=evaluate2(trainData[i]);
+                {   trainRealClass[i][0] = referenceOutput[i];		
+                    probabilitiesTra[i]=evaluate2(trainData[i]);
 		}
 
 		//Writing results
 
-		generateProbabilisticOutput(probabilitiesTra, this.nClasses,this.trainData.length, outFile[0]);
+		generateProbabilisticOutput(trainRealClass,probabilitiesTra, this.nClasses,this.trainData.length, outFile[0]);
                 
                 
 		//Working on test
@@ -927,12 +927,12 @@ public abstract class LazyAlgorithm {
 		predictions = new  int[this.testData.length];
 		
 		for (int i=0; i<realClass.length; i++)
-                {
+                {       realClass[i][0] = testOutput[i];
 			probabilitiesTst[i] = evaluate2(testData[i]);
                         
 		}
 		          		
-                generateProbabilisticOutput(probabilitiesTst, this.nClasses,this.testData.length, outFile[1]);
+                generateProbabilisticOutput(realClass, probabilitiesTst, this.nClasses,this.testData.length, outFile[1]);
 		
 	}
 	
@@ -1416,34 +1416,31 @@ public abstract class LazyAlgorithm {
    * @param filename the string with the name of the output file
    * 
    */
-        private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+        private void generateProbabilisticOutput(int [][] realclass, double[][] probabilities, int numClasses,int instances, String filename )
         {
             int dot = filename.lastIndexOf(".");
             int sep = filename.lastIndexOf("/");
             String extension=filename.substring(dot + 1);   
             String name =filename.substring(sep + 1, dot);
             String path = filename.substring(0, sep);
-            
-            String outputFile=path+"/Prob"+name+"."+extension;    
+            String outputFile=path+"/Prob-"+name+"."+extension;    
                 
-            String output = "Probabilistic Output.\n";
+            String output = "True-Class ";
 
-            //We write the output for each example
-
+            //We write the output for each example   
             for(int i=0; i<numClasses; i++)
             {
-                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
 
             }
             output+='\n';
-
-
-            output+='\n';
             for(int i=0; i<instances; i++)
-            {
+            {       
+                   
+                   output+=Attributes.getOutputAttribute(0).getNominalValue(realclass[i][0])+"\t";
                    for(int j=0;j<probabilities[i].length;j++)
                    {
-                      output+=probabilities[i][j]+", "; 
+                      output+=probabilities[i][j]+" \t"; 
                    }
                    output+="\n";
             }

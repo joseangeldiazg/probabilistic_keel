@@ -2392,7 +2392,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
                         
                         //Write the probabilities for training file
                         
-                        generateProbabilisticOutput(probabilities,m_NumClasses,probabilities.length, output_train_name);
+                        generateProbabilisticOutput(instanciasIN,probabilities,m_NumClasses,probabilities.length, output_train_name);
 		
                 }catch(Exception ex){
 			System.err.println("Fatal Error building the SMO model!");
@@ -2434,7 +2434,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
                         
                         //Write test probabilities 
                         
-                        generateProbabilisticOutput(probabilitiesTst,m_NumClasses,probabilitiesTst.length, output_test_name);
+                        generateProbabilisticOutput(instanciasIN, probabilitiesTst,m_NumClasses,probabilitiesTst.length, output_test_name);
                         
 		}catch(Exception ex){
 			System.err.println("Fatal Error performing test by the SMO model!");
@@ -3143,7 +3143,7 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
    * @param filename the string with the name of the output file
    * 
    */
-        public void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+        public void generateProbabilisticOutput(String[] trueclass, double[][] probabilities, int numClasses,int instances, String filename )
         {
             int dot = filename.lastIndexOf(".");
             int sep = filename.lastIndexOf("/");
@@ -3151,26 +3151,26 @@ implements WeightedInstancesHandler, TechnicalInformationHandler {
             String name =filename.substring(sep + 1, dot);
             String path = filename.substring(0, sep);
             
-            String outputFile=path+"/Prob"+name+"."+extension;    
+            String outputFile=path+"/Prob-"+name+"."+extension;    
                 
-            String output = "Probabilistic Output.\n";
+            String output = "True-Class ";
 
             //We write the output for each example
 
             for(int i=0; i<numClasses; i++)
             {
-                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
 
             }
             output+='\n';
 
 
-            output+='\n';
             for(int i=0; i<instances; i++)
             {
+                   output+=trueclass[i]+"\t";
                    for(int j=0;j<probabilities[i].length;j++)
                    {
-                      output+=probabilities[i][j]+", "; 
+                      output+=probabilities[i][j]+" \t"; 
                    }
                    output+="\n";
             }

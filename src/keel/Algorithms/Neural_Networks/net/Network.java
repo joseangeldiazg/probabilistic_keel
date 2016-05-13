@@ -723,6 +723,7 @@ public class Network {
                     }
                     if(tipo!=Attribute.NOMINAL){
                     	f.write(Integer.toString(Class) + " ");
+                        
                     	f.write(Integer.toString(NetGetClassOfPattern(data[i])));
                   	}
                   	else{
@@ -770,9 +771,7 @@ public class Network {
             e.printStackTrace();
             System.exit( -1);
         }
-
     }
-    
     /**
      * <p>
      * Save output data to file
@@ -783,33 +782,45 @@ public class Network {
      * @param problem Type of problem (CLASSIFICATION | REGRESSION )
      */
     public void SaveProbOutputFile(String file_name, double data[][], int n, String problem) 
-    {
-        
+    {  
         double [][] probabilities;
-    
+        String[] true_class = new String[n];
+            int Class = 0;
+
             probabilities= new double[n][Noutputs];
             Attribute aa = Attributes.getOutputAttribute(0);
             int tipo = aa.getType();
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) 
+            {
                  
+                for (int j = 1; j < Noutputs; j++) 
+                {
+                    if (data[i][Class + Ninputs] < data[i][j + Ninputs]) 
+                    {
+                        Class = j;
+                    }
+                }     
                 // Classification
                 if (problem.compareToIgnoreCase("Classification") == 0) 
                 {
 
                     if(tipo!=Attribute.NOMINAL)
-                    {
+                    {   
+                        
                         probabilities[i]=NetGetProbOfPattern(data[i]);
+                        true_class[i]=Integer.toString(Class);
                     }
                   	
-                    else
+                    else                 
                     {
+                        aa.getNominalValue(Class);
                         probabilities[i]=NetGetProbOfPattern(data[i]);
+                        true_class[i]=aa.getNominalValue(Class);
                     }
                 }
-                
             }
             
-        generateProbabilisticOutput(probabilities, probabilities[1].length,probabilities.length, file_name);
+        generateProbabilisticOutput(true_class, probabilities, probabilities[1].length,probabilities.length, file_name);
     }
              
    /**
@@ -919,7 +930,7 @@ public class Network {
    * 
    */
     
-    private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+    private void generateProbabilisticOutput(String[] trueclass, double[][] probabilities, int numClasses,int instances, String filename )
     {
                   
         int dot = filename.lastIndexOf(".");
@@ -928,26 +939,25 @@ public class Network {
         String name =filename.substring(sep + 1, dot);
         String path = filename.substring(0, sep);
             
-        String outputFile=path+"/Prob"+name+"."+extension;    
+        String outputFile=path+"/Prob-"+name+"."+extension;    
                 
-            String output = "Probabilistic Output.\n";
+            String output = "True-Class ";
 
             //We write the output for each example
 
             for(int i=0; i<numClasses; i++)
             {
-                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+",";
+                   output+= Attributes.getOutputAttribute(0).getNominalValue(i)+" ";
 
             }
             output+='\n';
 
-
-            output+='\n';
             for(int i=0; i<instances; i++)
             {
+                   output+=trueclass[i]+" ";
                    for(int j=0;j<probabilities[i].length;j++)
                    {
-                      output+=probabilities[i][j]+", "; 
+                      output+=probabilities[i][j]+" \t"; 
                    }
                    output+="\n";
             }

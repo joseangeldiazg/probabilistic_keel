@@ -148,8 +148,8 @@ public class Algorithm {
            
             doOutputProb(this.val, this.test);
             
-            generateProbabilisticOutput(probabilities,nClasses,train.getnData(),this.outputTr);
-            generateProbabilisticOutput(probabilitiesTst,nClasses,test.getnData(),this.outputTst);
+            generateProbabilisticOutput(this.val,probabilities,nClasses,train.getnData(),this.outputTr);
+            generateProbabilisticOutput(this.test,probabilitiesTst,nClasses,test.getnData(),this.outputTst);
             
             generateOutputInfo();
             System.out.println("Algorithm Finished");
@@ -380,7 +380,7 @@ public class Algorithm {
    * 
    */
     
-    private void generateProbabilisticOutput(double[][] probabilities, int numClasses,int instances, String filename )
+    private void generateProbabilisticOutput(myDataset dataset,double[][] probabilities, int numClasses,int instances, String filename )
     {
         
         int dot = filename.lastIndexOf(".");
@@ -388,10 +388,10 @@ public class Algorithm {
         String extension=filename.substring(dot + 1);   
         String name =filename.substring(sep + 1, dot);
         String path = filename.substring(0, sep);
-        String outputFile=path+"/Prob"+name+"."+extension;  
-        String output = new String("Probabilistic Output.\n");
+        String outputFile=path+"/Prob-"+name+"."+extension;  
      
         //We write the output for each example
+        output="True-Class ";
         for(int i=0; i<numClasses; i++)
         {
                output+=train.getOutputValue(i)+' ';
@@ -399,9 +399,10 @@ public class Algorithm {
         output+='\n';
         for(int i=0; i<instances; i++)
         {
+               output+=dataset.getOutputAsString(i)+'\t';
                for(int j=0;j<probabilities[i].length;j++)
                {
-                      output+=probabilities[i][j]+", "; 
+                      output+=probabilities[i][j]+"\t"; 
                }
                output+="\n";
         }
