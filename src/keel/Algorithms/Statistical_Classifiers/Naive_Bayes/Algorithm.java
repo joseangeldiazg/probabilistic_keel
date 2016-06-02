@@ -150,7 +150,6 @@ public class Algorithm {
             
             generateProbabilisticOutput(this.val,probabilities,nClasses,train.getnData(),this.outputTr);
             generateProbabilisticOutput(this.test,probabilitiesTst,nClasses,test.getnData(),this.outputTst);
-            
             generateOutputInfo();
             System.out.println("Algorithm Finished");
         }
@@ -382,7 +381,6 @@ public class Algorithm {
     
     private void generateProbabilisticOutput(myDataset dataset,double[][] probabilities, int numClasses,int instances, String filename )
     {
-        
         int dot = filename.lastIndexOf(".");
         int sep = filename.lastIndexOf("/");
         String extension=filename.substring(dot + 1);   
@@ -391,7 +389,7 @@ public class Algorithm {
         String outputFile=path+"/Prob-"+name+"."+extension;  
      
         //We write the output for each example
-        output="True-Class ";
+        String output="True-Class ";
         for(int i=0; i<numClasses; i++)
         {
                output+=train.getOutputValue(i)+' ';
