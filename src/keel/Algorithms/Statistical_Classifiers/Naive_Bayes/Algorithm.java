@@ -404,7 +404,6 @@ public class Algorithm {
                }
                output+="\n";
         }
-        output+='\n';
         Fichero.escribeFichero(outputFile, output);    
     }
 }
