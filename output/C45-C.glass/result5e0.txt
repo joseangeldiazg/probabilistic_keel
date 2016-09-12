@@ -1,0 +1,219 @@
+@relation  glass
+@attribute RI real[1.51115,1.53393]
+@attribute Na real[10.73,17.38]
+@attribute Mg real[0.0,4.49]
+@attribute Al real[0.29,3.5]
+@attribute Si real[69.81,75.41]
+@attribute K real[0.0,6.21]
+@attribute Ca real[5.43,16.19]
+@attribute Ba real[0.0,3.15]
+@attribute Fe real[0.0,0.51]
+@attribute typeGlass{1,2,3,4,5,6,7}
+@inputs RI,Na,Mg,Al,Si,K,Ca,Ba,Fe
+@outputs typeGlass
+@data
+
+@decisiontree
+
+if ( Ba <= 0.270900 ) then
+{
+	if ( Mg <= 2.411130 ) then
+	{
+		if ( K <= 0.031050 ) then
+		{
+			if ( Na <= 13.749100 ) then
+			{
+				typeGlass = "2"
+			}
+			elseif ( Na > 13.749100 ) then
+			{
+				typeGlass = "6"
+			}
+		}
+		elseif ( K > 0.031050 ) then
+		{
+			if ( Na <= 13.489750 ) then
+			{
+				if ( RI <= 1.524089 ) then
+				{
+					typeGlass = "5"
+				}
+				elseif ( RI > 1.524089 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+			elseif ( Na > 13.489750 ) then
+			{
+				typeGlass = "2"
+			}
+		}
+	}
+	elseif ( Mg > 2.411130 ) then
+	{
+		if ( Ca <= 8.313680 ) then
+		{
+			if ( Al <= 1.400660 ) then
+			{
+				if ( Mg <= 3.780580 ) then
+				{
+					if ( RI <= 1.516936 ) then
+					{
+						typeGlass = "2"
+					}
+					elseif ( RI > 1.516936 ) then
+					{
+						typeGlass = "1"
+					}
+				}
+				elseif ( Mg > 3.780580 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+			elseif ( Al > 1.400660 ) then
+			{
+				if ( Fe <= 0.112200 ) then
+				{
+					typeGlass = "2"
+				}
+				elseif ( Fe > 0.112200 ) then
+				{
+					if ( Fe <= 0.260100 ) then
+					{
+						typeGlass = "1"
+					}
+					elseif ( Fe > 0.260100 ) then
+					{
+						typeGlass = "2"
+					}
+				}
+			}
+		}
+		elseif ( Ca > 8.313680 ) then
+		{
+			if ( Mg <= 3.259740 ) then
+			{
+				if ( Ba <= 0.000000 ) then
+				{
+					if ( Al <= 1.179170 ) then
+					{
+						typeGlass = "2"
+					}
+					elseif ( Al > 1.179170 ) then
+					{
+						if ( Al <= 1.448810 ) then
+						{
+							typeGlass = "1"
+						}
+						elseif ( Al > 1.448810 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+				}
+				elseif ( Ba > 0.000000 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+			elseif ( Mg > 3.259740 ) then
+			{
+				if ( Mg <= 3.600980 ) then
+				{
+					if ( Si <= 72.688400 ) then
+					{
+						if ( RI <= 1.518462 ) then
+						{
+							typeGlass = "3"
+						}
+						elseif ( RI > 1.518462 ) then
+						{
+							if ( Si <= 72.369200 ) then
+							{
+								typeGlass = "1"
+							}
+							elseif ( Si > 72.369200 ) then
+							{
+								typeGlass = "3"
+							}
+						}
+					}
+					elseif ( Si > 72.688400 ) then
+					{
+						typeGlass = "1"
+					}
+				}
+				elseif ( Mg > 3.600980 ) then
+				{
+					if ( K <= 0.378810 ) then
+					{
+						if ( RI <= 1.518417 ) then
+						{
+							typeGlass = "3"
+						}
+						elseif ( RI > 1.518417 ) then
+						{
+							if ( Na <= 14.008450 ) then
+							{
+								typeGlass = "1"
+							}
+							elseif ( Na > 14.008450 ) then
+							{
+								if ( RI <= 1.522107 ) then
+								{
+									if ( Na <= 14.321000 ) then
+									{
+										typeGlass = "3"
+									}
+									elseif ( Na > 14.321000 ) then
+									{
+										typeGlass = "1"
+									}
+								}
+								elseif ( RI > 1.522107 ) then
+								{
+									typeGlass = "1"
+								}
+							}
+						}
+					}
+					elseif ( K > 0.378810 ) then
+					{
+						typeGlass = "2"
+					}
+				}
+			}
+		}
+	}
+}
+elseif ( Ba > 0.270900 ) then
+{
+	if ( Si <= 70.482000 ) then
+	{
+		typeGlass = "2"
+	}
+	elseif ( Si > 70.482000 ) then
+	{
+		typeGlass = "7"
+	}
+}
+
+@TotalNumberOfNodes 26
+@NumberOfLeafs 27
+@TotalNumberOfNodes 26
+@NumberOfAntecedentsByRule 6.074074074074074
+
+@NumberOfItemsetsTraining 192
+@NumberOfCorrectlyClassifiedTraining 181
+@PercentageOfCorrectlyClassifiedTraining 94.270836%
+@NumberOfInCorrectlyClassifiedTraining 11
+@PercentageOfInCorrectlyClassifiedTraining 5.7291665%
+
+@NumberOfItemsetsTest 22
+@NumberOfCorrectlyClassifiedTest 13
+@PercentageOfCorrectlyClassifiedTest 59.090908%
+@NumberOfInCorrectlyClassifiedTest 9
+@PercentageOfInCorrectlyClassifiedTest 40.909092%
+
+@ElapsedTime 0:0:0

@@ -1,5 +1,5 @@
 algorithm = C4.5 Decision Tree
-inputData = "./datasets/iris/iris-10-1tra.dat" "./datasets/iris/iris-10-1tra.dat" "./datasets/iris/iris-10-1tst.dat" 
+inputData = "/Users/joseadiazg/Desktop/data/abalone19/result0s0.tra" "/Users/joseadiazg/Desktop/data/abalone19/result0s0.tst" "/Users/joseadiazg/Desktop/data/abalone19/result0s0.tst"
 outputData = "./output/C45/resultC45.tra" "./output/C45/resultC45.tst" "./output/C45/resultC45salida.txt"  
 
 pruned = TRUE

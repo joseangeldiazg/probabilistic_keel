@@ -1,6 +1,6 @@
 algorithm = K Nearest Neighbors Classifier
-inputData = "./datasets/iris/iris-10-1tra.dat" "./datasets/iris/iris-10-1tra.dat" "./datasets/iris/iris-10-1tst.dat" 
+inputData = "/Users/joseadiazg/Desktop/data/abalone19/result0s0.tra" "/Users/joseadiazg/Desktop/data/abalone19/result0s0.tra" "/Users/joseadiazg/Desktop/data/abalone19/result0s0.tst" 
 outputData = "./output/KNN/resultadoKNN.tra" "./output/KNN/resultadoKNN.tst" "./output/KNN/resultadoKNN.txt"  
 
-K Value = 5
+K Value = 3
 Distance Function = Euclidean

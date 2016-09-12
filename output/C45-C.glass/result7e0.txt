@@ -1,0 +1,219 @@
+@relation  glass
+@attribute RI real[1.51115,1.53393]
+@attribute Na real[10.73,17.38]
+@attribute Mg real[0.0,4.49]
+@attribute Al real[0.29,3.5]
+@attribute Si real[69.81,75.41]
+@attribute K real[0.0,6.21]
+@attribute Ca real[5.43,16.19]
+@attribute Ba real[0.0,3.15]
+@attribute Fe real[0.0,0.51]
+@attribute typeGlass{1,2,3,4,5,6,7}
+@inputs RI,Na,Mg,Al,Si,K,Ca,Ba,Fe
+@outputs typeGlass
+@data
+
+@decisiontree
+
+if ( Ba <= 0.270900 ) then
+{
+	if ( Mg <= 2.411130 ) then
+	{
+		if ( K <= 0.049680 ) then
+		{
+			if ( Na <= 13.749100 ) then
+			{
+				typeGlass = "2"
+			}
+			elseif ( Na > 13.749100 ) then
+			{
+				typeGlass = "6"
+			}
+		}
+		elseif ( K > 0.049680 ) then
+		{
+			if ( Na <= 13.443200 ) then
+			{
+				if ( RI <= 1.523155 ) then
+				{
+					typeGlass = "5"
+				}
+				elseif ( RI > 1.523155 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+			elseif ( Na > 13.443200 ) then
+			{
+				typeGlass = "2"
+			}
+		}
+	}
+	elseif ( Mg > 2.411130 ) then
+	{
+		if ( Al <= 1.410290 ) then
+		{
+			if ( RI <= 1.516891 ) then
+			{
+				if ( RI <= 1.515957 ) then
+				{
+					typeGlass = "1"
+				}
+				elseif ( RI > 1.515957 ) then
+				{
+					if ( Fe <= 0.061200 ) then
+					{
+						if ( Mg <= 3.538120 ) then
+						{
+							typeGlass = "3"
+						}
+						elseif ( Mg > 3.538120 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+					elseif ( Fe > 0.061200 ) then
+					{
+						typeGlass = "2"
+					}
+				}
+			}
+			elseif ( RI > 1.516891 ) then
+			{
+				if ( K <= 0.229770 ) then
+				{
+					if ( Si <= 71.249200 ) then
+					{
+						typeGlass = "2"
+					}
+					elseif ( Si > 71.249200 ) then
+					{
+						if ( Si <= 72.638000 ) then
+						{
+							if ( Na <= 14.008450 ) then
+							{
+								typeGlass = "1"
+							}
+							elseif ( Na > 14.008450 ) then
+							{
+								if ( RI <= 1.522107 ) then
+								{
+									if ( Na <= 14.321000 ) then
+									{
+										typeGlass = "3"
+									}
+									elseif ( Na > 14.321000 ) then
+									{
+										typeGlass = "1"
+									}
+								}
+								elseif ( RI > 1.522107 ) then
+								{
+									typeGlass = "1"
+								}
+							}
+						}
+						elseif ( Si > 72.638000 ) then
+						{
+							typeGlass = "3"
+						}
+					}
+				}
+				elseif ( K > 0.229770 ) then
+				{
+					if ( Mg <= 3.609960 ) then
+					{
+						typeGlass = "1"
+					}
+					elseif ( Mg > 3.609960 ) then
+					{
+						if ( RI <= 1.517870 ) then
+						{
+							typeGlass = "1"
+						}
+						elseif ( RI > 1.517870 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+				}
+			}
+		}
+		elseif ( Al > 1.410290 ) then
+		{
+			if ( Si <= 72.481200 ) then
+			{
+				if ( Ca <= 8.281400 ) then
+				{
+					typeGlass = "2"
+				}
+				elseif ( Ca > 8.281400 ) then
+				{
+					typeGlass = "3"
+				}
+			}
+			elseif ( Si > 72.481200 ) then
+			{
+				if ( RI <= 1.517323 ) then
+				{
+					if ( Fe <= 0.112200 ) then
+					{
+						typeGlass = "2"
+					}
+					elseif ( Fe > 0.112200 ) then
+					{
+						if ( Fe <= 0.132600 ) then
+						{
+							typeGlass = "1"
+						}
+						elseif ( Fe > 0.132600 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+				}
+				elseif ( RI > 1.517323 ) then
+				{
+					typeGlass = "1"
+				}
+			}
+		}
+	}
+}
+elseif ( Ba > 0.270900 ) then
+{
+	if ( Mg <= 3.371990 ) then
+	{
+		if ( Si <= 69.888400 ) then
+		{
+			typeGlass = "2"
+		}
+		elseif ( Si > 69.888400 ) then
+		{
+			typeGlass = "7"
+		}
+	}
+	elseif ( Mg > 3.371990 ) then
+	{
+		typeGlass = "1"
+	}
+}
+
+@TotalNumberOfNodes 26
+@NumberOfLeafs 27
+@TotalNumberOfNodes 26
+@NumberOfAntecedentsByRule 5.925925925925926
+
+@NumberOfItemsetsTraining 194
+@NumberOfCorrectlyClassifiedTraining 183
+@PercentageOfCorrectlyClassifiedTraining 94.329895%
+@NumberOfInCorrectlyClassifiedTraining 11
+@PercentageOfInCorrectlyClassifiedTraining 5.670103%
+
+@NumberOfItemsetsTest 20
+@NumberOfCorrectlyClassifiedTest 17
+@PercentageOfCorrectlyClassifiedTest 85.0%
+@NumberOfInCorrectlyClassifiedTest 3
+@PercentageOfInCorrectlyClassifiedTest 15.0%
+
+@ElapsedTime 0:0:0

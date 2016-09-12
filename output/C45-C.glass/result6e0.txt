@@ -1,0 +1,219 @@
+@relation  glass
+@attribute RI real[1.51115,1.53393]
+@attribute Na real[10.73,17.38]
+@attribute Mg real[0.0,4.49]
+@attribute Al real[0.29,3.5]
+@attribute Si real[69.81,75.41]
+@attribute K real[0.0,6.21]
+@attribute Ca real[5.43,16.19]
+@attribute Ba real[0.0,3.15]
+@attribute Fe real[0.0,0.51]
+@attribute typeGlass{1,2,3,4,5,6,7}
+@inputs RI,Na,Mg,Al,Si,K,Ca,Ba,Fe
+@outputs typeGlass
+@data
+
+@decisiontree
+
+if ( Mg <= 2.680530 ) then
+{
+	if ( Ba <= 0.270900 ) then
+	{
+		if ( K <= 0.111780 ) then
+		{
+			if ( Ca <= 10.885320 ) then
+			{
+				typeGlass = "6"
+			}
+			elseif ( Ca > 10.885320 ) then
+			{
+				typeGlass = "2"
+			}
+		}
+		elseif ( K > 0.111780 ) then
+		{
+			if ( Fe <= 0.025500 ) then
+			{
+				if ( K <= 0.670680 ) then
+				{
+					typeGlass = "5"
+				}
+				elseif ( K > 0.670680 ) then
+				{
+					if ( RI <= 1.514089 ) then
+					{
+						typeGlass = "5"
+					}
+					elseif ( RI > 1.514089 ) then
+					{
+						typeGlass = "7"
+					}
+				}
+			}
+			elseif ( Fe > 0.025500 ) then
+			{
+				if ( Na <= 13.237050 ) then
+				{
+					typeGlass = "5"
+				}
+				elseif ( Na > 13.237050 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+		}
+	}
+	elseif ( Ba > 0.270900 ) then
+	{
+		if ( Si <= 69.888400 ) then
+		{
+			typeGlass = "2"
+		}
+		elseif ( Si > 69.888400 ) then
+		{
+			typeGlass = "7"
+		}
+	}
+}
+elseif ( Mg > 2.680530 ) then
+{
+	if ( Al <= 1.410290 ) then
+	{
+		if ( RI <= 1.517073 ) then
+		{
+			if ( RI <= 1.515957 ) then
+			{
+				typeGlass = "1"
+			}
+			elseif ( RI > 1.515957 ) then
+			{
+				if ( Fe <= 0.061200 ) then
+				{
+					if ( Al <= 1.278680 ) then
+					{
+						if ( Mg <= 3.470770 ) then
+						{
+							typeGlass = "3"
+						}
+						elseif ( Mg > 3.470770 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+					elseif ( Al > 1.278680 ) then
+					{
+						typeGlass = "3"
+					}
+				}
+				elseif ( Fe > 0.061200 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+		}
+		elseif ( RI > 1.517073 ) then
+		{
+			if ( Mg <= 3.861400 ) then
+			{
+				if ( Fe <= 0.056100 ) then
+				{
+					if ( Si <= 71.238000 ) then
+					{
+						typeGlass = "2"
+					}
+					elseif ( Si > 71.238000 ) then
+					{
+						if ( K <= 0.111780 ) then
+						{
+							if ( RI <= 1.518417 ) then
+							{
+								typeGlass = "3"
+							}
+							elseif ( RI > 1.518417 ) then
+							{
+								typeGlass = "1"
+							}
+						}
+						elseif ( K > 0.111780 ) then
+						{
+							typeGlass = "1"
+						}
+					}
+				}
+				elseif ( Fe > 0.056100 ) then
+				{
+					if ( K <= 0.540270 ) then
+					{
+						typeGlass = "1"
+					}
+					elseif ( K > 0.540270 ) then
+					{
+						if ( Mg <= 3.538120 ) then
+						{
+							typeGlass = "1"
+						}
+						elseif ( Mg > 3.538120 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+				}
+			}
+			elseif ( Mg > 3.861400 ) then
+			{
+				if ( RI <= 1.519693 ) then
+				{
+					typeGlass = "2"
+				}
+				elseif ( RI > 1.519693 ) then
+				{
+					typeGlass = "1"
+				}
+			}
+		}
+	}
+	elseif ( Al > 1.410290 ) then
+	{
+		if ( Ca <= 8.324440 ) then
+		{
+			typeGlass = "2"
+		}
+		elseif ( Ca > 8.324440 ) then
+		{
+			if ( Na <= 13.117350 ) then
+			{
+				if ( Mg <= 3.448320 ) then
+				{
+					typeGlass = "2"
+				}
+				elseif ( Mg > 3.448320 ) then
+				{
+					typeGlass = "1"
+				}
+			}
+			elseif ( Na > 13.117350 ) then
+			{
+				typeGlass = "3"
+			}
+		}
+	}
+}
+
+@TotalNumberOfNodes 26
+@NumberOfLeafs 27
+@TotalNumberOfNodes 26
+@NumberOfAntecedentsByRule 5.407407407407407
+
+@NumberOfItemsetsTraining 193
+@NumberOfCorrectlyClassifiedTraining 181
+@PercentageOfCorrectlyClassifiedTraining 93.78239%
+@NumberOfInCorrectlyClassifiedTraining 12
+@PercentageOfInCorrectlyClassifiedTraining 6.2176166%
+
+@NumberOfItemsetsTest 21
+@NumberOfCorrectlyClassifiedTest 9
+@PercentageOfCorrectlyClassifiedTest 42.857143%
+@NumberOfInCorrectlyClassifiedTest 12
+@PercentageOfInCorrectlyClassifiedTest 57.142857%
+
+@ElapsedTime 0:0:0

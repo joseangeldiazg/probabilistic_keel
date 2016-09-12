@@ -1,0 +1,6 @@
+algorithm = K Nearest Neighbors Classifier
+inputData = "/Users/joseadiazg/Desktop/ecoli-5-fold/ecoli-5-1tra.dat" "/Users/joseadiazg/Desktop/ecoli-5-fold/ecoli-5-1tra.dat" "/Users/joseadiazg/Desktop/ecoli-5-fold/ecoli-5-1tst.dat"
+outputData = "./output/KNN/resultadoKNN1.tra" "./output/KNN/resultadoKNN1.tst" "./output/KNN/resultadoKNN1.txt"
+
+K Value = 3
+Distance Function = Euclidean

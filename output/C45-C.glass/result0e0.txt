@@ -1,0 +1,226 @@
+@relation  glass
+@attribute RI real[1.51115,1.53393]
+@attribute Na real[10.73,17.38]
+@attribute Mg real[0.0,4.49]
+@attribute Al real[0.29,3.5]
+@attribute Si real[69.81,75.41]
+@attribute K real[0.0,6.21]
+@attribute Ca real[5.43,16.19]
+@attribute Ba real[0.0,3.15]
+@attribute Fe real[0.0,0.51]
+@attribute typeGlass{1,2,3,4,5,6,7}
+@inputs RI,Na,Mg,Al,Si,K,Ca,Ba,Fe
+@outputs typeGlass
+@data
+
+@decisiontree
+
+if ( Ba <= 0.270900 ) then
+{
+	if ( K <= 0.000000 ) then
+	{
+		typeGlass = "6"
+	}
+	elseif ( K > 0.000000 ) then
+	{
+		if ( Mg <= 1.881310 ) then
+		{
+			if ( Al <= 1.368560 ) then
+			{
+				typeGlass = "2"
+			}
+			elseif ( Al > 1.368560 ) then
+			{
+				if ( Fe <= 0.158100 ) then
+				{
+					typeGlass = "5"
+				}
+				elseif ( Fe > 0.158100 ) then
+				{
+					typeGlass = "2"
+				}
+			}
+		}
+		elseif ( Mg > 1.881310 ) then
+		{
+			if ( Al <= 1.410290 ) then
+			{
+				if ( RI <= 1.517073 ) then
+				{
+					if ( RI <= 1.515957 ) then
+					{
+						typeGlass = "1"
+					}
+					elseif ( RI > 1.515957 ) then
+					{
+						if ( Si <= 72.722000 ) then
+						{
+							typeGlass = "3"
+						}
+						elseif ( Si > 72.722000 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+				}
+				elseif ( RI > 1.517073 ) then
+				{
+					if ( K <= 0.229770 ) then
+					{
+						if ( Ca <= 10.568000 ) then
+						{
+							if ( Si <= 72.638000 ) then
+							{
+								if ( Na <= 14.008450 ) then
+								{
+									typeGlass = "1"
+								}
+								elseif ( Na > 14.008450 ) then
+								{
+									if ( RI <= 1.522107 ) then
+									{
+										typeGlass = "3"
+									}
+									elseif ( RI > 1.522107 ) then
+									{
+										typeGlass = "1"
+									}
+								}
+							}
+							elseif ( Si > 72.638000 ) then
+							{
+								typeGlass = "3"
+							}
+						}
+						elseif ( Ca > 10.568000 ) then
+						{
+							typeGlass = "2"
+						}
+					}
+					elseif ( K > 0.229770 ) then
+					{
+						if ( Mg <= 3.659350 ) then
+						{
+							if ( Fe <= 0.071400 ) then
+							{
+								typeGlass = "1"
+							}
+							elseif ( Fe > 0.071400 ) then
+							{
+								if ( Al <= 1.169540 ) then
+								{
+									typeGlass = "2"
+								}
+								elseif ( Al > 1.169540 ) then
+								{
+									typeGlass = "1"
+								}
+							}
+						}
+						elseif ( Mg > 3.659350 ) then
+						{
+							if ( RI <= 1.517870 ) then
+							{
+								typeGlass = "1"
+							}
+							elseif ( RI > 1.517870 ) then
+							{
+								typeGlass = "2"
+							}
+						}
+					}
+				}
+			}
+			elseif ( Al > 1.410290 ) then
+			{
+				if ( Si <= 72.492400 ) then
+				{
+					if ( Na <= 13.529650 ) then
+					{
+						if ( Fe <= 0.040800 ) then
+						{
+							if ( Mg <= 3.407910 ) then
+							{
+								typeGlass = "3"
+							}
+							elseif ( Mg > 3.407910 ) then
+							{
+								typeGlass = "2"
+							}
+						}
+						elseif ( Fe > 0.040800 ) then
+						{
+							typeGlass = "3"
+						}
+					}
+					elseif ( Na > 13.529650 ) then
+					{
+						typeGlass = "2"
+					}
+				}
+				elseif ( Si > 72.492400 ) then
+				{
+					if ( RI <= 1.517323 ) then
+					{
+						if ( Fe <= 0.112200 ) then
+						{
+							typeGlass = "2"
+						}
+						elseif ( Fe > 0.112200 ) then
+						{
+							if ( Fe <= 0.132600 ) then
+							{
+								typeGlass = "1"
+							}
+							elseif ( Fe > 0.132600 ) then
+							{
+								typeGlass = "2"
+							}
+						}
+					}
+					elseif ( RI > 1.517323 ) then
+					{
+						typeGlass = "1"
+					}
+				}
+			}
+		}
+	}
+}
+elseif ( Ba > 0.270900 ) then
+{
+	if ( Mg <= 3.371990 ) then
+	{
+		if ( Si <= 69.888400 ) then
+		{
+			typeGlass = "2"
+		}
+		elseif ( Si > 69.888400 ) then
+		{
+			typeGlass = "7"
+		}
+	}
+	elseif ( Mg > 3.371990 ) then
+	{
+		typeGlass = "1"
+	}
+}
+
+@TotalNumberOfNodes 27
+@NumberOfLeafs 28
+@TotalNumberOfNodes 27
+@NumberOfAntecedentsByRule 6.714285714285714
+
+@NumberOfItemsetsTraining 191
+@NumberOfCorrectlyClassifiedTraining 182
+@PercentageOfCorrectlyClassifiedTraining 95.28796%
+@NumberOfInCorrectlyClassifiedTraining 9
+@PercentageOfInCorrectlyClassifiedTraining 4.712042%
+
+@NumberOfItemsetsTest 23
+@NumberOfCorrectlyClassifiedTest 14
+@PercentageOfCorrectlyClassifiedTest 60.869564%
+@NumberOfInCorrectlyClassifiedTest 9
+@PercentageOfInCorrectlyClassifiedTest 39.130436%
+
+@ElapsedTime 0:0:0
