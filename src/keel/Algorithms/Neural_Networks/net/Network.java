@@ -115,7 +115,7 @@ public class Network {
         }
         Nhidden[Nlayers - 1] = Noutputs;
 
-        // Initialize network weights
+        //Initialize network weights
         for (int k = 0; k < Nlayers - 1; k++) {
             range = Math.sqrt(3.0) / Nhidden[k];
             for (int i = 0; i < Nhidden[k + 1]; i++) {

@@ -88,7 +88,8 @@ public class Files{
      * @param fileName Name of the file to read
      * @param content The content to be written
      */
-    public static void writeFile (String fileName, String content) {
+    public static void writeFile (String fileName, String content) 
+    {
         try {
                 FileOutputStream f = new FileOutputStream(fileName);
                 DataOutputStream fis = new DataOutputStream((OutputStream) f);
