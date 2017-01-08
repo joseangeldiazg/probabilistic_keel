@@ -1,6 +1,10 @@
 # probabilistic_keel
 
-This repository has the end result of the TFG carried out during 2016. The possibility of obtaining the results probabilistically rather than discrete results for further processing and obtaining ROC curves for evaluation are added to certain algorithms.
+This repository has the end result of the first part of TFG carried out during 2016. The possibility of obtaining the results probabilistically rather than discrete results for further processing and obtaining ROC curves for evaluation are added to certain algorithms.
+
+The second part of the project is in [this repository](http://joseangeldiazg.github.io/tfg_roc_keel/). 
+
+This website offers the reader a summary of the work done, which can be found in the following link: [Full Work](https://drive.google.com/open?id=0By8uWsmNWXG0anF1YXZOb3JFRUk).
 
 The modified algorithms and their modifications are:
 
